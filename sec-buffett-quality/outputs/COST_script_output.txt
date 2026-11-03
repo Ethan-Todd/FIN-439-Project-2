@@ -1,0 +1,67 @@
+Company: COSTCO WHOLESALE CORP /NEW
+Ticker: COST
+CIK: 0000909832
+Downloaded: 2026-11-03
+Filings: 10-K only; last 5 fiscal years by fiscal-year-end date
+Units: USD millions except ROE and liabilities/equity
+Ticker source: https://www.sec.gov/files/company_tickers.json
+Facts source: https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json
+
+FIVE-YEAR FACTS
+Fiscal year end: 2022-08-28
+  Revenue: 226,954.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax
+  Net income: 5,844.0 | tag: NetIncomeLoss
+  Operating cash flow: 7,392.0 | tag: NetCashProvidedByUsedInOperatingActivities
+  Capital spending: 3,891.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment
+  Equity: 20,642.0 | tag: StockholdersEquity
+  Liabilities: 43,519.0 | tag: Liabilities
+  ROE: 28.31% | tags: NetIncomeLoss / StockholdersEquity
+  Owner earnings: 3,501.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment
+  Liabilities / equity: 2.11x | tags: Liabilities / StockholdersEquity
+Fiscal year end: 2023-09-03
+  Revenue: 242,290.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax
+  Net income: 6,292.0 | tag: NetIncomeLoss
+  Operating cash flow: 11,068.0 | tag: NetCashProvidedByUsedInOperatingActivities
+  Capital spending: 4,323.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment
+  Equity: 25,058.0 | tag: StockholdersEquity
+  Liabilities: 43,936.0 | tag: Liabilities
+  ROE: 25.11% | tags: NetIncomeLoss / StockholdersEquity
+  Owner earnings: 6,745.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment
+  Liabilities / equity: 1.75x | tags: Liabilities / StockholdersEquity
+Fiscal year end: 2024-09-01
+  Revenue: 254,453.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax
+  Net income: 7,367.0 | tag: NetIncomeLoss
+  Operating cash flow: 11,339.0 | tag: NetCashProvidedByUsedInOperatingActivities
+  Capital spending: 4,710.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment
+  Equity: 23,622.0 | tag: StockholdersEquity
+  Liabilities: 46,209.0 | tag: Liabilities
+  ROE: 31.19% | tags: NetIncomeLoss / StockholdersEquity
+  Owner earnings: 6,629.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment
+  Liabilities / equity: 1.96x | tags: Liabilities / StockholdersEquity
+Fiscal year end: 2025-08-31
+  Revenue: 275,235.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax
+  Net income: 8,099.0 | tag: NetIncomeLoss
+  Operating cash flow: 13,335.0 | tag: NetCashProvidedByUsedInOperatingActivities
+  Capital spending: 5,498.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment
+  Equity: 29,164.0 | tag: StockholdersEquity
+  Liabilities: 47,935.0 | tag: Liabilities
+  ROE: 27.77% | tags: NetIncomeLoss / StockholdersEquity
+  Owner earnings: 7,837.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment
+  Liabilities / equity: 1.64x | tags: Liabilities / StockholdersEquity
+Fiscal year end: 2026-08-30
+  Revenue: 303,154.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax
+  Net income: 9,226.0 | tag: NetIncomeLoss
+  Operating cash flow: 15,817.0 | tag: NetCashProvidedByUsedInOperatingActivities
+  Capital spending: 6,435.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment
+  Equity: 35,803.0 | tag: StockholdersEquity
+  Liabilities: 53,242.0 | tag: Liabilities
+  ROE: 25.77% | tags: NetIncomeLoss / StockholdersEquity
+  Owner earnings: 9,382.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment
+  Liabilities / equity: 1.49x | tags: Liabilities / StockholdersEquity
+
+BUFFETT-STYLE CODED CHECKS
+  ROE of 15% or more every year: PASS
+  Owner earnings positive every year: PASS
+  Owner earnings grew, first year to last: PASS
+
+No price data used. This is a business-quality learning demonstration, not investment advice.

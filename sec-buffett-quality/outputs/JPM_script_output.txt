@@ -1,0 +1,67 @@
+Company: JPMORGAN CHASE & CO
+Ticker: JPM
+CIK: 0000019617
+Downloaded: 2026-11-03
+Filings: 10-K only; last 5 fiscal years by fiscal-year-end date
+Units: USD millions except ROE and liabilities/equity
+Ticker source: https://www.sec.gov/files/company_tickers.json
+Facts source: https://data.sec.gov/api/xbrl/companyfacts/CIK0000019617.json
+
+FIVE-YEAR FACTS
+Fiscal year end: 2021-12-31
+  Revenue: 121,649.0 | tag: Revenues
+  Net income: 48,334.0 | tag: NetIncomeLoss
+  Operating cash flow: 78,084.0 | tag: NetCashProvidedByUsedInOperatingActivities
+  Capital spending: not found | tag: not found
+  Equity: 294,127.0 | tag: StockholdersEquity
+  Liabilities: 3,449,440.0 | tag: Liabilities
+  ROE: 16.43% | tags: NetIncomeLoss / StockholdersEquity
+  Owner earnings: not found | tags: not known
+  Liabilities / equity: 11.73x | tags: Liabilities / StockholdersEquity
+Fiscal year end: 2022-12-31
+  Revenue: 128,695.0 | tag: Revenues
+  Net income: 37,676.0 | tag: NetIncomeLoss
+  Operating cash flow: 107,119.0 | tag: NetCashProvidedByUsedInOperatingActivities
+  Capital spending: not found | tag: not found
+  Equity: 292,332.0 | tag: StockholdersEquity
+  Liabilities: 3,373,411.0 | tag: Liabilities
+  ROE: 12.89% | tags: NetIncomeLoss / StockholdersEquity
+  Owner earnings: not found | tags: not known
+  Liabilities / equity: 11.54x | tags: Liabilities / StockholdersEquity
+Fiscal year end: 2023-12-31
+  Revenue: 158,104.0 | tag: Revenues
+  Net income: 49,552.0 | tag: NetIncomeLoss
+  Operating cash flow: 12,974.0 | tag: NetCashProvidedByUsedInOperatingActivities
+  Capital spending: not found | tag: not found
+  Equity: 327,878.0 | tag: StockholdersEquity
+  Liabilities: 3,547,515.0 | tag: Liabilities
+  ROE: 15.11% | tags: NetIncomeLoss / StockholdersEquity
+  Owner earnings: not found | tags: not known
+  Liabilities / equity: 10.82x | tags: Liabilities / StockholdersEquity
+Fiscal year end: 2024-12-31
+  Revenue: 177,556.0 | tag: Revenues
+  Net income: 58,471.0 | tag: NetIncomeLoss
+  Operating cash flow: -42,012.0 | tag: NetCashProvidedByUsedInOperatingActivities
+  Capital spending: not found | tag: not found
+  Equity: 344,758.0 | tag: StockholdersEquity
+  Liabilities: 3,658,056.0 | tag: Liabilities
+  ROE: 16.96% | tags: NetIncomeLoss / StockholdersEquity
+  Owner earnings: not found | tags: not known
+  Liabilities / equity: 10.61x | tags: Liabilities / StockholdersEquity
+Fiscal year end: 2025-12-31
+  Revenue: 182,447.0 | tag: Revenues
+  Net income: 57,048.0 | tag: NetIncomeLoss
+  Operating cash flow: -147,782.0 | tag: NetCashProvidedByUsedInOperatingActivities
+  Capital spending: not found | tag: not found
+  Equity: 362,438.0 | tag: StockholdersEquity
+  Liabilities: 4,062,462.0 | tag: Liabilities
+  ROE: 15.74% | tags: NetIncomeLoss / StockholdersEquity
+  Owner earnings: not found | tags: not known
+  Liabilities / equity: 11.21x | tags: Liabilities / StockholdersEquity
+
+BUFFETT-STYLE CODED CHECKS
+  ROE of 15% or more every year: FAIL
+  Owner earnings positive every year: not known
+  Owner earnings grew, first year to last: not known
+
+No price data used. This is a business-quality learning demonstration, not investment advice.

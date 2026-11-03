@@ -1,0 +1,3 @@
+# My request to the AI
+
+Use `$sec-buffett-quality` on COST. Download only keyless SEC EDGAR ticker and company-facts data with a User-Agent containing my real name and email. Apply the assignment's 10-K, one-year-flow, latest-filing, tag-priority, missing-data, ROE, and owner-earnings rules exactly. Print Costco's last five fiscal years and the three coded checks, then write and save a short Buffett-style business-quality memo choosing **Own the business**, **Watch it**, or **Pass** using only numbers printed by the script. Do not use prices, install FAskills, call paid data sources, estimate missing values, or make a stock-price recommendation. Run the Streamlit app and verify its chart, table, checks, memo, SEC links, and memo-number audit.

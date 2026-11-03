@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEC Buffett Quality"
+  short_description: "Five-year SEC owner-earnings review"
+  default_prompt: "Use $sec-buffett-quality to review this ticker's five-year business quality from SEC 10-K facts and write the no-price memo."

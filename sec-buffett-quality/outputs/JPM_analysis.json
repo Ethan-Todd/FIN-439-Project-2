@@ -1,0 +1,324 @@
+{
+  "ticker": "JPM",
+  "company_name": "JPMORGAN CHASE & CO",
+  "cik": "0000019617",
+  "download_date": "2026-11-03",
+  "sources": {
+    "ticker_map": "https://www.sec.gov/files/company_tickers.json",
+    "companyfacts": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000019617.json"
+  },
+  "units": "USD millions except ROE and liabilities/equity",
+  "years": [
+    {
+      "fiscal_year_end": "2021-12-31",
+      "facts": {
+        "revenue": {
+          "value": 121649000000,
+          "tag": "Revenues",
+          "filed": "2024-02-16",
+          "accession": "0000019617-24-000225",
+          "start": "2021-01-01",
+          "end": "2021-12-31"
+        },
+        "net_income": {
+          "value": 48334000000,
+          "tag": "NetIncomeLoss",
+          "filed": "2024-02-16",
+          "accession": "0000019617-24-000225",
+          "start": "2021-01-01",
+          "end": "2021-12-31"
+        },
+        "operating_cash_flow": {
+          "value": 78084000000,
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "filed": "2024-02-16",
+          "accession": "0000019617-24-000225",
+          "start": "2021-01-01",
+          "end": "2021-12-31"
+        },
+        "capital_spending": null,
+        "equity": {
+          "value": 294127000000,
+          "tag": "StockholdersEquity",
+          "filed": "2024-02-16",
+          "accession": "0000019617-24-000225",
+          "start": null,
+          "end": "2021-12-31"
+        },
+        "liabilities": {
+          "value": 3449440000000,
+          "tag": "Liabilities",
+          "filed": "2023-02-21",
+          "accession": "0000019617-23-000231",
+          "start": null,
+          "end": "2021-12-31"
+        }
+      },
+      "roe": {
+        "value": 0.16433037429409744,
+        "label": "ROE",
+        "tag": "NetIncomeLoss / StockholdersEquity"
+      },
+      "owner_earnings": {
+        "value": null,
+        "label": "Owner earnings",
+        "tag": "not known"
+      },
+      "liabilities_to_equity": {
+        "value": 11.727723058406742,
+        "label": "Liabilities / equity",
+        "tag": "Liabilities / StockholdersEquity"
+      }
+    },
+    {
+      "fiscal_year_end": "2022-12-31",
+      "facts": {
+        "revenue": {
+          "value": 128695000000,
+          "tag": "Revenues",
+          "filed": "2025-02-14",
+          "accession": "0000019617-25-000270",
+          "start": "2022-01-01",
+          "end": "2022-12-31"
+        },
+        "net_income": {
+          "value": 37676000000,
+          "tag": "NetIncomeLoss",
+          "filed": "2025-02-14",
+          "accession": "0000019617-25-000270",
+          "start": "2022-01-01",
+          "end": "2022-12-31"
+        },
+        "operating_cash_flow": {
+          "value": 107119000000,
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "filed": "2025-02-14",
+          "accession": "0000019617-25-000270",
+          "start": "2022-01-01",
+          "end": "2022-12-31"
+        },
+        "capital_spending": null,
+        "equity": {
+          "value": 292332000000,
+          "tag": "StockholdersEquity",
+          "filed": "2025-02-14",
+          "accession": "0000019617-25-000270",
+          "start": null,
+          "end": "2022-12-31"
+        },
+        "liabilities": {
+          "value": 3373411000000,
+          "tag": "Liabilities",
+          "filed": "2024-02-16",
+          "accession": "0000019617-24-000225",
+          "start": null,
+          "end": "2022-12-31"
+        }
+      },
+      "roe": {
+        "value": 0.12888086148625535,
+        "label": "ROE",
+        "tag": "NetIncomeLoss / StockholdersEquity"
+      },
+      "owner_earnings": {
+        "value": null,
+        "label": "Owner earnings",
+        "tag": "not known"
+      },
+      "liabilities_to_equity": {
+        "value": 11.539656965368144,
+        "label": "Liabilities / equity",
+        "tag": "Liabilities / StockholdersEquity"
+      }
+    },
+    {
+      "fiscal_year_end": "2023-12-31",
+      "facts": {
+        "revenue": {
+          "value": 158104000000,
+          "tag": "Revenues",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": "2023-01-01",
+          "end": "2023-12-31"
+        },
+        "net_income": {
+          "value": 49552000000,
+          "tag": "NetIncomeLoss",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": "2023-01-01",
+          "end": "2023-12-31"
+        },
+        "operating_cash_flow": {
+          "value": 12974000000,
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": "2023-01-01",
+          "end": "2023-12-31"
+        },
+        "capital_spending": null,
+        "equity": {
+          "value": 327878000000,
+          "tag": "StockholdersEquity",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": null,
+          "end": "2023-12-31"
+        },
+        "liabilities": {
+          "value": 3547515000000,
+          "tag": "Liabilities",
+          "filed": "2025-02-14",
+          "accession": "0000019617-25-000270",
+          "start": null,
+          "end": "2023-12-31"
+        }
+      },
+      "roe": {
+        "value": 0.15112938349020064,
+        "label": "ROE",
+        "tag": "NetIncomeLoss / StockholdersEquity"
+      },
+      "owner_earnings": {
+        "value": null,
+        "label": "Owner earnings",
+        "tag": "not known"
+      },
+      "liabilities_to_equity": {
+        "value": 10.819618882633174,
+        "label": "Liabilities / equity",
+        "tag": "Liabilities / StockholdersEquity"
+      }
+    },
+    {
+      "fiscal_year_end": "2024-12-31",
+      "facts": {
+        "revenue": {
+          "value": 177556000000,
+          "tag": "Revenues",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": "2024-01-01",
+          "end": "2024-12-31"
+        },
+        "net_income": {
+          "value": 58471000000,
+          "tag": "NetIncomeLoss",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": "2024-01-01",
+          "end": "2024-12-31"
+        },
+        "operating_cash_flow": {
+          "value": -42012000000,
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": "2024-01-01",
+          "end": "2024-12-31"
+        },
+        "capital_spending": null,
+        "equity": {
+          "value": 344758000000,
+          "tag": "StockholdersEquity",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": null,
+          "end": "2024-12-31"
+        },
+        "liabilities": {
+          "value": 3658056000000,
+          "tag": "Liabilities",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": null,
+          "end": "2024-12-31"
+        }
+      },
+      "roe": {
+        "value": 0.16960012530528662,
+        "label": "ROE",
+        "tag": "NetIncomeLoss / StockholdersEquity"
+      },
+      "owner_earnings": {
+        "value": null,
+        "label": "Owner earnings",
+        "tag": "not known"
+      },
+      "liabilities_to_equity": {
+        "value": 10.610503599626405,
+        "label": "Liabilities / equity",
+        "tag": "Liabilities / StockholdersEquity"
+      }
+    },
+    {
+      "fiscal_year_end": "2025-12-31",
+      "facts": {
+        "revenue": {
+          "value": 182447000000,
+          "tag": "Revenues",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "net_income": {
+          "value": 57048000000,
+          "tag": "NetIncomeLoss",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "operating_cash_flow": {
+          "value": -147782000000,
+          "tag": "NetCashProvidedByUsedInOperatingActivities",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": "2025-01-01",
+          "end": "2025-12-31"
+        },
+        "capital_spending": null,
+        "equity": {
+          "value": 362438000000,
+          "tag": "StockholdersEquity",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": null,
+          "end": "2025-12-31"
+        },
+        "liabilities": {
+          "value": 4062462000000,
+          "tag": "Liabilities",
+          "filed": "2026-02-13",
+          "accession": "0001628280-26-008131",
+          "start": null,
+          "end": "2025-12-31"
+        }
+      },
+      "roe": {
+        "value": 0.1574007140531622,
+        "label": "ROE",
+        "tag": "NetIncomeLoss / StockholdersEquity"
+      },
+      "owner_earnings": {
+        "value": null,
+        "label": "Owner earnings",
+        "tag": "not known"
+      },
+      "liabilities_to_equity": {
+        "value": 11.208708799849905,
+        "label": "Liabilities / equity",
+        "tag": "Liabilities / StockholdersEquity"
+      }
+    }
+  ],
+  "checks": {
+    "roe_at_least_15_every_year": "FAIL",
+    "owner_earnings_positive_every_year": "not known",
+    "owner_earnings_grew_first_to_last": "not known"
+  },
+  "printed_report": "Company: JPMORGAN CHASE & CO\nTicker: JPM\nCIK: 0000019617\nDownloaded: 2026-11-03\nFilings: 10-K only; last 5 fiscal years by fiscal-year-end date\nUnits: USD millions except ROE and liabilities/equity\nTicker source: https://www.sec.gov/files/company_tickers.json\nFacts source: https://data.sec.gov/api/xbrl/companyfacts/CIK0000019617.json\n\nFIVE-YEAR FACTS\nFiscal year end: 2021-12-31\n  Revenue: 121,649.0 | tag: Revenues\n  Net income: 48,334.0 | tag: NetIncomeLoss\n  Operating cash flow: 78,084.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: not found | tag: not found\n  Equity: 294,127.0 | tag: StockholdersEquity\n  Liabilities: 3,449,440.0 | tag: Liabilities\n  ROE: 16.43% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: not found | tags: not known\n  Liabilities / equity: 11.73x | tags: Liabilities / StockholdersEquity\nFiscal year end: 2022-12-31\n  Revenue: 128,695.0 | tag: Revenues\n  Net income: 37,676.0 | tag: NetIncomeLoss\n  Operating cash flow: 107,119.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: not found | tag: not found\n  Equity: 292,332.0 | tag: StockholdersEquity\n  Liabilities: 3,373,411.0 | tag: Liabilities\n  ROE: 12.89% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: not found | tags: not known\n  Liabilities / equity: 11.54x | tags: Liabilities / StockholdersEquity\nFiscal year end: 2023-12-31\n  Revenue: 158,104.0 | tag: Revenues\n  Net income: 49,552.0 | tag: NetIncomeLoss\n  Operating cash flow: 12,974.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: not found | tag: not found\n  Equity: 327,878.0 | tag: StockholdersEquity\n  Liabilities: 3,547,515.0 | tag: Liabilities\n  ROE: 15.11% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: not found | tags: not known\n  Liabilities / equity: 10.82x | tags: Liabilities / StockholdersEquity\nFiscal year end: 2024-12-31\n  Revenue: 177,556.0 | tag: Revenues\n  Net income: 58,471.0 | tag: NetIncomeLoss\n  Operating cash flow: -42,012.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: not found | tag: not found\n  Equity: 344,758.0 | tag: StockholdersEquity\n  Liabilities: 3,658,056.0 | tag: Liabilities\n  ROE: 16.96% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: not found | tags: not known\n  Liabilities / equity: 10.61x | tags: Liabilities / StockholdersEquity\nFiscal year end: 2025-12-31\n  Revenue: 182,447.0 | tag: Revenues\n  Net income: 57,048.0 | tag: NetIncomeLoss\n  Operating cash flow: -147,782.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: not found | tag: not found\n  Equity: 362,438.0 | tag: StockholdersEquity\n  Liabilities: 4,062,462.0 | tag: Liabilities\n  ROE: 15.74% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: not found | tags: not known\n  Liabilities / equity: 11.21x | tags: Liabilities / StockholdersEquity\n\nBUFFETT-STYLE CODED CHECKS\n  ROE of 15% or more every year: FAIL\n  Owner earnings positive every year: not known\n  Owner earnings grew, first year to last: not known\n\nNo price data used. This is a business-quality learning demonstration, not investment advice."
+}
