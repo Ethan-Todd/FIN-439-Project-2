@@ -16,6 +16,7 @@ TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 COMPANYFACTS_URL = "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"
 ANNUAL_MIN_DAYS = 300
 ANNUAL_MAX_DAYS = 380
+CATHIE_REVENUE_GROWTH_THRESHOLD = 0.15
 
 METRICS = {
     "revenue": {
@@ -317,10 +318,16 @@ def build_analysis(ticker, user_name, user_email):
             ],
         },
         "Cathie Wood": {
-            "Revenue grew at least 15% a year": (
+            "Revenue grew at least "
+            f"{CATHIE_REVENUE_GROWTH_THRESHOLD:.0%} a year": (
                 "not known"
                 if revenue_cagr["value"] is None
-                else ("PASS" if revenue_cagr["value"] >= 0.15 else "FAIL")
+                else (
+                    "PASS"
+                    if revenue_cagr["value"]
+                    >= CATHIE_REVENUE_GROWTH_THRESHOLD
+                    else "FAIL"
+                )
             ),
             "R&D at least 5% of revenue, latest year": (
                 "not known"

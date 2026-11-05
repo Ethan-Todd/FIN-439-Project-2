@@ -13,4 +13,3 @@ Write `outputs/TICKER_wood_memo.md` with one bold `Verdict:` line and a short ex
 - R&D was at least 5% of revenue in the latest year.
 
 Choose **Own the business**, **Watch it**, or **Pass** as a model judgment. Preserve `not known` when a required fact is missing. Judge business quality only, use no prices, do not invent claims about innovation, and do not imply Cathie Wood reviewed the company.
-
