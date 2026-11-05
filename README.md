@@ -13,8 +13,8 @@ This repository contains the Project 2 mandate, portfolio, point-in-time data, a
 - `asof.py` — known-answer provenance gate for publication dates and revisions.
 - `asof_app.py` — FRED/ALFRED current-versus-vintage Streamlit application.
 - `asof_data_card.md` — source, lag, revision, hand-check, partner feedback, and admission decision.
-- `sec-buffett-quality/` — Codex skill, SEC EDGAR script, Streamlit app, memos, and validation evidence.
-- `sec_buffett_request.md` — the student-written request used for the SEC/Buffett exercise.
+- `sec-buffett-quality/` — Buffett, Cathie Wood, and Burry skill instructions; one SEC EDGAR engine; a three-investor Streamlit panel; memos; and validation evidence.
+- `sec_buffett_request.md` and `sec_investor_panel_request.md` — the student-written requests for the SEC skill exercises.
 
 ## Setup and commands
 

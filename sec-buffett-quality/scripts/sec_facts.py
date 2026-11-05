@@ -54,6 +54,11 @@ METRICS = {
         "tags": ["Liabilities"],
         "flow": False,
     },
+    "research_and_development": {
+        "label": "Research and development",
+        "tags": ["ResearchAndDevelopmentExpense"],
+        "flow": True,
+    },
 }
 
 
@@ -189,6 +194,8 @@ def build_analysis(ticker, user_name, user_email):
         net_income = facts["net_income"]
         equity = facts["equity"]
         liabilities = facts["liabilities"]
+        revenue = facts["revenue"]
+        research_and_development = facts["research_and_development"]
         operating_cash_flow = facts["operating_cash_flow"]
         capital_spending = facts["capital_spending"]
 
@@ -223,6 +230,17 @@ def build_analysis(ticker, user_name, user_email):
                 None, "Liabilities / equity", "not known"
             )
 
+        if research_and_development and revenue and revenue["value"] != 0:
+            research_and_development_to_revenue = derived_value(
+                research_and_development["value"] / revenue["value"],
+                "R&D / revenue",
+                f"{research_and_development['tag']} / {revenue['tag']}",
+            )
+        else:
+            research_and_development_to_revenue = derived_value(
+                None, "R&D / revenue", "not known"
+            )
+
         years.append(
             {
                 "fiscal_year_end": fiscal_end,
@@ -230,6 +248,9 @@ def build_analysis(ticker, user_name, user_email):
                 "roe": roe,
                 "owner_earnings": owner_earnings,
                 "liabilities_to_equity": liabilities_to_equity,
+                "research_and_development_to_revenue": (
+                    research_and_development_to_revenue
+                ),
             }
         )
 
@@ -251,6 +272,79 @@ def build_analysis(ticker, user_name, user_email):
         ),
     }
 
+    revenue_values = [
+        None if not year["facts"]["revenue"] else year["facts"]["revenue"]["value"]
+        for year in years
+    ]
+    if (
+        len(revenue_values) == 5
+        and revenue_values[0] is not None
+        and revenue_values[-1] is not None
+        and revenue_values[0] > 0
+        and revenue_values[-1] >= 0
+    ):
+        revenue_cagr = derived_value(
+            (revenue_values[-1] / revenue_values[0]) ** (1 / 4) - 1,
+            "Revenue growth, first year to last",
+            "(last revenue / first revenue)^(1/4) - 1",
+        )
+    else:
+        revenue_cagr = derived_value(
+            None, "Revenue growth, first year to last", "not known"
+        )
+
+    latest_rd_ratio = years[-1]["research_and_development_to_revenue"]
+    operating_cash_flow_covers_net_income = []
+    for year in years:
+        operating_cash_flow = year["facts"]["operating_cash_flow"]
+        net_income = year["facts"]["net_income"]
+        operating_cash_flow_covers_net_income.append(
+            None
+            if not operating_cash_flow or not net_income
+            else operating_cash_flow["value"] >= net_income["value"]
+        )
+
+    investor_checks = {
+        "Buffett": {
+            "ROE at least 15% every year": checks[
+                "roe_at_least_15_every_year"
+            ],
+            "Owner earnings positive every year": checks[
+                "owner_earnings_positive_every_year"
+            ],
+            "Owner earnings grew, first year to last": checks[
+                "owner_earnings_grew_first_to_last"
+            ],
+        },
+        "Cathie Wood": {
+            "Revenue grew at least 15% a year": (
+                "not known"
+                if revenue_cagr["value"] is None
+                else ("PASS" if revenue_cagr["value"] >= 0.15 else "FAIL")
+            ),
+            "R&D at least 5% of revenue, latest year": (
+                "not known"
+                if latest_rd_ratio["value"] is None
+                else ("PASS" if latest_rd_ratio["value"] >= 0.05 else "FAIL")
+            ),
+        },
+        "Burry": {
+            "Operating cash flow at least net income every year": check_all(
+                operating_cash_flow_covers_net_income,
+                lambda value: value,
+            ),
+            "Liabilities no more than twice equity, latest year": (
+                "not known"
+                if years[-1]["liabilities_to_equity"]["value"] is None
+                else (
+                    "PASS"
+                    if years[-1]["liabilities_to_equity"]["value"] <= 2.0
+                    else "FAIL"
+                )
+            ),
+        },
+    }
+
     analysis = {
         "ticker": ticker.upper(),
         "company_name": company_name,
@@ -263,6 +357,8 @@ def build_analysis(ticker, user_name, user_email):
         "units": "USD millions except ROE and liabilities/equity",
         "years": years,
         "checks": checks,
+        "revenue_cagr": revenue_cagr,
+        "investor_checks": investor_checks,
     }
     analysis["printed_report"] = render_report(analysis)
     return analysis
@@ -310,6 +406,7 @@ def render_report(analysis):
         "capital_spending",
         "equity",
         "liabilities",
+        "research_and_development",
     ]
     for year in analysis["years"]:
         lines.append(f"Fiscal year end: {year['fiscal_year_end']}")
@@ -332,6 +429,11 @@ def render_report(analysis):
             f"{ratio_text(year['liabilities_to_equity'])} | tags: "
             f"{year['liabilities_to_equity']['tag']}"
         )
+        lines.append(
+            "  R&D / revenue: "
+            f"{percent_text(year['research_and_development_to_revenue'])} | "
+            f"tags: {year['research_and_development_to_revenue']['tag']}"
+        )
     lines.extend(
         [
             "",
@@ -342,6 +444,22 @@ def render_report(analysis):
             + analysis["checks"]["owner_earnings_positive_every_year"],
             "  Owner earnings grew, first year to last: "
             + analysis["checks"]["owner_earnings_grew_first_to_last"],
+            "",
+            "REVENUE GROWTH",
+            "  First year to last annual growth: "
+            + percent_text(analysis["revenue_cagr"])
+            + " | formula: "
+            + analysis["revenue_cagr"]["tag"],
+            "",
+            "THREE-INVESTOR CODED CHECKS",
+        ]
+    )
+    for investor, investor_checks in analysis["investor_checks"].items():
+        lines.append(investor)
+        for label, result in investor_checks.items():
+            lines.append(f"  {label}: {result}")
+    lines.extend(
+        [
             "",
             "No price data used. This is a business-quality learning "
             "demonstration, not investment advice.",

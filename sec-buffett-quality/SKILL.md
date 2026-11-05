@@ -1,9 +1,9 @@
 ---
 name: sec-buffett-quality
-description: Analyze an operating company's five-year business quality from SEC EDGAR 10-K facts, compute Buffett-style owner-earnings checks, write a no-price business memo, and display the evidence in Streamlit. Use for ticker-based ROE, owner earnings, and SEC-as-source Buffett reviews; do not use for price valuation or trading advice.
+description: Analyze an operating company's five-year business quality from SEC EDGAR 10-K facts through Buffett, Cathie Wood, and Burry rule sets, write no-price memos, and display a shared-evidence investor panel in Streamlit. Use for ticker-based SEC investor-quality panels; do not use for price valuation or trading advice.
 ---
 
-# SEC Buffett Quality
+# SEC Investor Quality Panel
 
 Use the bundled deterministic script for every number. Do not install FAskills, call its paid data services, fetch prices, or fill missing facts with estimates.
 
@@ -24,13 +24,14 @@ Use the bundled deterministic script for every number. Do not install FAskills, 
    - judge the business, not its stock price, and state that no price conclusion is made;
    - do not assert a moat, management quality, or debt safety unless the printed evidence supports the statement;
    - do not present invented quotations or imply that Warren Buffett actually reviewed the company.
-5. Run the app from the skill folder:
+5. Read `investors/cathie-wood/SKILL.md` and `investors/burry/SKILL.md`, then write their two memos from the same printed report. Do not introduce numbers from another source or calculate new memo-only numbers.
+6. Run the app from the skill folder:
 
    ```bash
    streamlit run app.py
    ```
 
-   Confirm the chart, table, checks, memo, and numeric-audit message all render. Any memo number absent from the script output must remain visibly flagged until corrected or removed.
+   Confirm the chart, facts table, investor-by-check panel, three memos, and cross-memo numeric audit all render. Any memo number absent from the script output must remain visibly flagged until corrected or removed.
 
 ## Data rules
 
@@ -41,5 +42,7 @@ Use the bundled deterministic script for every number. Do not install FAskills, 
 - Report missing facts as `not found`; report derived ratios/checks with missing inputs as `not known`.
 - Treat nonpositive equity as making ROE and liabilities/equity `not known`.
 - Owner earnings for this assignment are operating cash flow minus capital spending. Do not substitute a different Buffett owner-earnings formula.
+- Revenue growth is `(last revenue / first revenue)^(1/4) - 1` for five annual observations.
+- Use `ResearchAndDevelopmentExpense` for R&D and `Liabilities` for liabilities. Missing facts and all dependent checks remain `not known`.
 
 The qualitative frame is adapted narrowly from the public FAskills Buffett instruction page: think like a whole-business owner and focus on durable earning power, returns on equity, cash generation, and balance-sheet caution. The assignment's SEC-only evidence and no-price boundary override every broader data or valuation request on that page.

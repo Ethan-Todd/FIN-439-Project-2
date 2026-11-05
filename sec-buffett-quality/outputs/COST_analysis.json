@@ -2,7 +2,7 @@
   "ticker": "COST",
   "company_name": "COSTCO WHOLESALE CORP /NEW",
   "cik": "0000909832",
-  "download_date": "2026-11-03",
+  "download_date": "2026-11-05",
   "sources": {
     "ticker_map": "https://www.sec.gov/files/company_tickers.json",
     "companyfacts": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json"
@@ -59,7 +59,8 @@
           "accession": "0000909832-23-000042",
           "start": null,
           "end": "2022-08-28"
-        }
+        },
+        "research_and_development": null
       },
       "roe": {
         "value": 0.2831121015405484,
@@ -75,6 +76,11 @@
         "value": 2.1082743920162774,
         "label": "Liabilities / equity",
         "tag": "Liabilities / StockholdersEquity"
+      },
+      "research_and_development_to_revenue": {
+        "value": null,
+        "label": "R&D / revenue",
+        "tag": "not known"
       }
     },
     {
@@ -127,7 +133,8 @@
           "accession": "0000909832-24-000049",
           "start": null,
           "end": "2023-09-03"
-        }
+        },
+        "research_and_development": null
       },
       "roe": {
         "value": 0.2510974539069359,
@@ -143,6 +150,11 @@
         "value": 1.7533721765504031,
         "label": "Liabilities / equity",
         "tag": "Liabilities / StockholdersEquity"
+      },
+      "research_and_development_to_revenue": {
+        "value": null,
+        "label": "R&D / revenue",
+        "tag": "not known"
       }
     },
     {
@@ -195,7 +207,8 @@
           "accession": "0000909832-25-000101",
           "start": null,
           "end": "2024-09-01"
-        }
+        },
+        "research_and_development": null
       },
       "roe": {
         "value": 0.3118702904072475,
@@ -211,6 +224,11 @@
         "value": 1.9561849123698247,
         "label": "Liabilities / equity",
         "tag": "Liabilities / StockholdersEquity"
+      },
+      "research_and_development_to_revenue": {
+        "value": null,
+        "label": "R&D / revenue",
+        "tag": "not known"
       }
     },
     {
@@ -263,7 +281,8 @@
           "accession": "0000909832-26-000093",
           "start": null,
           "end": "2025-08-31"
-        }
+        },
+        "research_and_development": null
       },
       "roe": {
         "value": 0.27770539020710466,
@@ -279,6 +298,11 @@
         "value": 1.6436359895761898,
         "label": "Liabilities / equity",
         "tag": "Liabilities / StockholdersEquity"
+      },
+      "research_and_development_to_revenue": {
+        "value": null,
+        "label": "R&D / revenue",
+        "tag": "not known"
       }
     },
     {
@@ -331,7 +355,8 @@
           "accession": "0000909832-26-000093",
           "start": null,
           "end": "2026-08-30"
-        }
+        },
+        "research_and_development": null
       },
       "roe": {
         "value": 0.25768790324833113,
@@ -347,6 +372,11 @@
         "value": 1.4870820880931765,
         "label": "Liabilities / equity",
         "tag": "Liabilities / StockholdersEquity"
+      },
+      "research_and_development_to_revenue": {
+        "value": null,
+        "label": "R&D / revenue",
+        "tag": "not known"
       }
     }
   ],
@@ -355,5 +385,25 @@
     "owner_earnings_positive_every_year": "PASS",
     "owner_earnings_grew_first_to_last": "PASS"
   },
-  "printed_report": "Company: COSTCO WHOLESALE CORP /NEW\nTicker: COST\nCIK: 0000909832\nDownloaded: 2026-11-03\nFilings: 10-K only; last 5 fiscal years by fiscal-year-end date\nUnits: USD millions except ROE and liabilities/equity\nTicker source: https://www.sec.gov/files/company_tickers.json\nFacts source: https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json\n\nFIVE-YEAR FACTS\nFiscal year end: 2022-08-28\n  Revenue: 226,954.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax\n  Net income: 5,844.0 | tag: NetIncomeLoss\n  Operating cash flow: 7,392.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: 3,891.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment\n  Equity: 20,642.0 | tag: StockholdersEquity\n  Liabilities: 43,519.0 | tag: Liabilities\n  ROE: 28.31% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: 3,501.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment\n  Liabilities / equity: 2.11x | tags: Liabilities / StockholdersEquity\nFiscal year end: 2023-09-03\n  Revenue: 242,290.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax\n  Net income: 6,292.0 | tag: NetIncomeLoss\n  Operating cash flow: 11,068.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: 4,323.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment\n  Equity: 25,058.0 | tag: StockholdersEquity\n  Liabilities: 43,936.0 | tag: Liabilities\n  ROE: 25.11% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: 6,745.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment\n  Liabilities / equity: 1.75x | tags: Liabilities / StockholdersEquity\nFiscal year end: 2024-09-01\n  Revenue: 254,453.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax\n  Net income: 7,367.0 | tag: NetIncomeLoss\n  Operating cash flow: 11,339.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: 4,710.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment\n  Equity: 23,622.0 | tag: StockholdersEquity\n  Liabilities: 46,209.0 | tag: Liabilities\n  ROE: 31.19% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: 6,629.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment\n  Liabilities / equity: 1.96x | tags: Liabilities / StockholdersEquity\nFiscal year end: 2025-08-31\n  Revenue: 275,235.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax\n  Net income: 8,099.0 | tag: NetIncomeLoss\n  Operating cash flow: 13,335.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: 5,498.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment\n  Equity: 29,164.0 | tag: StockholdersEquity\n  Liabilities: 47,935.0 | tag: Liabilities\n  ROE: 27.77% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: 7,837.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment\n  Liabilities / equity: 1.64x | tags: Liabilities / StockholdersEquity\nFiscal year end: 2026-08-30\n  Revenue: 303,154.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax\n  Net income: 9,226.0 | tag: NetIncomeLoss\n  Operating cash flow: 15,817.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: 6,435.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment\n  Equity: 35,803.0 | tag: StockholdersEquity\n  Liabilities: 53,242.0 | tag: Liabilities\n  ROE: 25.77% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: 9,382.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment\n  Liabilities / equity: 1.49x | tags: Liabilities / StockholdersEquity\n\nBUFFETT-STYLE CODED CHECKS\n  ROE of 15% or more every year: PASS\n  Owner earnings positive every year: PASS\n  Owner earnings grew, first year to last: PASS\n\nNo price data used. This is a business-quality learning demonstration, not investment advice."
+  "revenue_cagr": {
+    "value": 0.07505668815961197,
+    "label": "Revenue growth, first year to last",
+    "tag": "(last revenue / first revenue)^(1/4) - 1"
+  },
+  "investor_checks": {
+    "Buffett": {
+      "ROE at least 15% every year": "PASS",
+      "Owner earnings positive every year": "PASS",
+      "Owner earnings grew, first year to last": "PASS"
+    },
+    "Cathie Wood": {
+      "Revenue grew at least 15% a year": "FAIL",
+      "R&D at least 5% of revenue, latest year": "not known"
+    },
+    "Burry": {
+      "Operating cash flow at least net income every year": "PASS",
+      "Liabilities no more than twice equity, latest year": "PASS"
+    }
+  },
+  "printed_report": "Company: COSTCO WHOLESALE CORP /NEW\nTicker: COST\nCIK: 0000909832\nDownloaded: 2026-11-05\nFilings: 10-K only; last 5 fiscal years by fiscal-year-end date\nUnits: USD millions except ROE and liabilities/equity\nTicker source: https://www.sec.gov/files/company_tickers.json\nFacts source: https://data.sec.gov/api/xbrl/companyfacts/CIK0000909832.json\n\nFIVE-YEAR FACTS\nFiscal year end: 2022-08-28\n  Revenue: 226,954.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax\n  Net income: 5,844.0 | tag: NetIncomeLoss\n  Operating cash flow: 7,392.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: 3,891.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment\n  Equity: 20,642.0 | tag: StockholdersEquity\n  Liabilities: 43,519.0 | tag: Liabilities\n  Research and development: not found | tag: not found\n  ROE: 28.31% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: 3,501.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment\n  Liabilities / equity: 2.11x | tags: Liabilities / StockholdersEquity\n  R&D / revenue: not known | tags: not known\nFiscal year end: 2023-09-03\n  Revenue: 242,290.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax\n  Net income: 6,292.0 | tag: NetIncomeLoss\n  Operating cash flow: 11,068.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: 4,323.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment\n  Equity: 25,058.0 | tag: StockholdersEquity\n  Liabilities: 43,936.0 | tag: Liabilities\n  Research and development: not found | tag: not found\n  ROE: 25.11% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: 6,745.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment\n  Liabilities / equity: 1.75x | tags: Liabilities / StockholdersEquity\n  R&D / revenue: not known | tags: not known\nFiscal year end: 2024-09-01\n  Revenue: 254,453.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax\n  Net income: 7,367.0 | tag: NetIncomeLoss\n  Operating cash flow: 11,339.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: 4,710.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment\n  Equity: 23,622.0 | tag: StockholdersEquity\n  Liabilities: 46,209.0 | tag: Liabilities\n  Research and development: not found | tag: not found\n  ROE: 31.19% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: 6,629.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment\n  Liabilities / equity: 1.96x | tags: Liabilities / StockholdersEquity\n  R&D / revenue: not known | tags: not known\nFiscal year end: 2025-08-31\n  Revenue: 275,235.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax\n  Net income: 8,099.0 | tag: NetIncomeLoss\n  Operating cash flow: 13,335.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: 5,498.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment\n  Equity: 29,164.0 | tag: StockholdersEquity\n  Liabilities: 47,935.0 | tag: Liabilities\n  Research and development: not found | tag: not found\n  ROE: 27.77% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: 7,837.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment\n  Liabilities / equity: 1.64x | tags: Liabilities / StockholdersEquity\n  R&D / revenue: not known | tags: not known\nFiscal year end: 2026-08-30\n  Revenue: 303,154.0 | tag: RevenueFromContractWithCustomerExcludingAssessedTax\n  Net income: 9,226.0 | tag: NetIncomeLoss\n  Operating cash flow: 15,817.0 | tag: NetCashProvidedByUsedInOperatingActivities\n  Capital spending: 6,435.0 | tag: PaymentsToAcquirePropertyPlantAndEquipment\n  Equity: 35,803.0 | tag: StockholdersEquity\n  Liabilities: 53,242.0 | tag: Liabilities\n  Research and development: not found | tag: not found\n  ROE: 25.77% | tags: NetIncomeLoss / StockholdersEquity\n  Owner earnings: 9,382.0 | tags: NetCashProvidedByUsedInOperatingActivities - PaymentsToAcquirePropertyPlantAndEquipment\n  Liabilities / equity: 1.49x | tags: Liabilities / StockholdersEquity\n  R&D / revenue: not known | tags: not known\n\nBUFFETT-STYLE CODED CHECKS\n  ROE of 15% or more every year: PASS\n  Owner earnings positive every year: PASS\n  Owner earnings grew, first year to last: PASS\n\nREVENUE GROWTH\n  First year to last annual growth: 7.51% | formula: (last revenue / first revenue)^(1/4) - 1\n\nTHREE-INVESTOR CODED CHECKS\nBuffett\n  ROE at least 15% every year: PASS\n  Owner earnings positive every year: PASS\n  Owner earnings grew, first year to last: PASS\nCathie Wood\n  Revenue grew at least 15% a year: FAIL\n  R&D at least 5% of revenue, latest year: not known\nBurry\n  Operating cash flow at least net income every year: PASS\n  Liabilities no more than twice equity, latest year: PASS\n\nNo price data used. This is a business-quality learning demonstration, not investment advice."
 }

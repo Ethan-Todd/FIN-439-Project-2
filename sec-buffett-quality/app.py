@@ -31,6 +31,18 @@ def unprinted_memo_numbers(memo, report):
     return sorted(numbers_in(memo) - numbers_in(report))
 
 
+MEMO_FILES = {
+    "Buffett": "{ticker}_buffett_memo.md",
+    "Cathie Wood": "{ticker}_wood_memo.md",
+    "Burry": "{ticker}_burry_memo.md",
+}
+
+
+def memo_verdict(memo):
+    match = re.search(r"(?im)^\s*\*\*Verdict:\s*([^*\n]+)\*\*", memo)
+    return match.group(1).strip() if match else "not found"
+
+
 def load_analysis(ticker):
     path = OUTPUT_DIR / f"{ticker}_analysis.json"
     if not path.exists():
@@ -80,6 +92,8 @@ def display_analysis(analysis):
             ("operating_cash_flow", "Operating cash flow"),
             ("capital_spending", "Capital spending"),
             ("equity", "Equity"),
+            ("liabilities", "Liabilities"),
+            ("research_and_development", "Research and development"),
         ]:
             fact = year["facts"][key]
             row[label] = money_cell(fact)
@@ -92,6 +106,16 @@ def display_analysis(analysis):
         row["ROE tags"] = year["roe"]["tag"]
         row["Owner earnings"] = derived_money_cell(owner_earnings)
         row["Owner earnings tags"] = owner_earnings["tag"]
+        row["Liabilities / equity"] = (
+            "not known"
+            if year["liabilities_to_equity"]["value"] is None
+            else f"{year['liabilities_to_equity']['value']:.2f}x"
+        )
+        row["R&D / revenue"] = (
+            "not known"
+            if year["research_and_development_to_revenue"]["value"] is None
+            else f"{year['research_and_development_to_revenue']['value']:.2%}"
+        )
         table_rows.append(row)
 
     st.subheader("Owner earnings and net income")
@@ -126,12 +150,82 @@ def display_analysis(analysis):
         ]
     )
 
+    st.write(
+        "Revenue growth, first year to last: "
+        + (
+            "not known"
+            if analysis["revenue_cagr"]["value"] is None
+            else f"{analysis['revenue_cagr']['value']:.2%}"
+        )
+        + " using (last revenue / first revenue)^(1/4) - 1."
+    )
+
+    st.subheader("Three-investor panel")
+    memos = {}
+    verdicts = {}
+    flagged_by_investor = {}
+    for investor, template in MEMO_FILES.items():
+        memo_path = OUTPUT_DIR / template.format(ticker=analysis["ticker"])
+        memo = (
+            memo_path.read_text(encoding="utf-8")
+            if memo_path.exists()
+            else ""
+        )
+        memos[investor] = memo
+        verdicts[investor] = memo_verdict(memo) if memo else "memo missing"
+        flagged_by_investor[investor] = (
+            unprinted_memo_numbers(memo, analysis["printed_report"])
+            if memo
+            else []
+        )
+
+    check_labels = []
+    for checks in analysis["investor_checks"].values():
+        for label in checks:
+            if label not in check_labels:
+                check_labels.append(label)
+    panel_rows = []
+    for investor, checks in analysis["investor_checks"].items():
+        row = {"Investor": investor}
+        for label in check_labels:
+            row[label] = checks.get(label, "—").lower()
+        row["Verdict"] = verdicts[investor]
+        panel_rows.append(row)
+    st.dataframe(panel_rows, width="stretch", hide_index=True)
+
+    st.subheader("Investor memos")
+    columns = st.columns(3)
+    for column, investor in zip(columns, MEMO_FILES):
+        with column:
+            st.markdown(f"### {investor}")
+            if memos[investor]:
+                st.markdown(memos[investor])
+            else:
+                st.warning("Memo not found.")
+
+    all_flagged = {
+        investor: numbers
+        for investor, numbers in flagged_by_investor.items()
+        if numbers
+    }
+    if all_flagged:
+        details = "; ".join(
+            f"{investor}: {', '.join(numbers)}"
+            for investor, numbers in all_flagged.items()
+        )
+        st.error("Memo numbers not found in the script output — " + details)
+    elif all(memos.values()):
+        st.success(
+            "Numeric audit passed across all three memos: every memo number "
+            "was printed by the script."
+        )
+
     st.markdown(
         f"Sources: [SEC ticker map]({analysis['sources']['ticker_map']}) · "
         f"[SEC company facts]({analysis['sources']['companyfacts']})"
     )
 
-    st.subheader("Buffett-style business-quality memo")
+    st.subheader("Original Buffett memo and audit")
     memo_path = OUTPUT_DIR / f"{analysis['ticker']}_buffett_memo.md"
     if not memo_path.exists():
         st.warning(f"Memo not found: {memo_path.name}")

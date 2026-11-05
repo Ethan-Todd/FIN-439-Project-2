@@ -52,6 +52,33 @@ def validate_cost(analysis):
         failures.append(
             f"COST checks: expected {expected_checks}, got {analysis['checks']}"
         )
+    expected_panel_checks = {
+        "Buffett": {
+            "ROE at least 15% every year": "PASS",
+            "Owner earnings positive every year": "PASS",
+            "Owner earnings grew, first year to last": "PASS",
+        },
+        "Cathie Wood": {
+            "Revenue grew at least 15% a year": "FAIL",
+            "R&D at least 5% of revenue, latest year": "not known",
+        },
+        "Burry": {
+            "Operating cash flow at least net income every year": "PASS",
+            "Liabilities no more than twice equity, latest year": "PASS",
+        },
+    }
+    if analysis.get("investor_checks") != expected_panel_checks:
+        failures.append(
+            "COST investor-panel checks differ from the known result: "
+            f"{analysis.get('investor_checks')}"
+        )
+    if round(analysis.get("revenue_cagr", {}).get("value", -1) * 100, 2) != 7.51:
+        failures.append("COST revenue CAGR did not equal 7.51%")
+    if any(
+        year["facts"].get("research_and_development") is not None
+        for year in analysis["years"]
+    ):
+        failures.append("COST R&D should be not found under the required tag")
     return failures
 
 
