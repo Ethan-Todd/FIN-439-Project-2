@@ -68,10 +68,20 @@ The engine estimates annual return as the arithmetic mean monthly return multipl
 | All 60 monthly returns | 85.00% | 0.00% | 0.00% | 15.00% | 5.28% | 2.45% | 85.00% |
 | Last 36 monthly returns | 95.00% | 0.00% | 0.00% | 5.00% | 5.29% | 0.69% | 95.00% |
 
-Both tested windows produce a qualifying mix. The largest allocation change is tied at 10.0 percentage points: SGOV rises from 85% to 95%, while VOO falls from 15% to 5%. The app's largest-change box reads **VOO: −10.0 percentage points**. This large change comes from the last-36-month estimates—particularly VOO's higher historical annualized return—not from a change to the client's mandate, and it shows that the answer is sensitive to the estimation period.
+Both tested windows produce a qualifying mix. The largest allocation change is tied at 10.0 percentage points: SGOV rises from 85% to 95%, while VOO falls from 15% to 5%. The app now reports the maximum absolute change across assets, **10.0 percentage points**. This large change comes from the last-36-month estimates—particularly VOO's higher historical annualized return—not from a change to the client's mandate, and it shows that the answer is sensitive to the estimation period.
 
 ## Provisional allocation call
 
 **Pilot, not adopt:** use the all-month mix of 85% SGOV and 15% VOO as the Project 2 starting allocation, because it meets the 5.0% estimated-return objective and the 10% reserve minimum with the lowest modeled volatility on that sample. Adopt it only if a refreshed estimate or reasonable alternative estimation window does not move either allocation by more than five percentage points; the last-36-month test currently fails that condition because it changes both SGOV and VOO by 10 points.
 
 **Challenge tested:** the mix may depend too heavily on the selected historical window. **Response:** changing from all 60 monthly returns to the last 36 changes the mix from 85% SGOV / 15% VOO to 95% SGOV / 5% VOO, so the challenge is supported and the result should remain a pilot rather than a final adopted allocation.
+
+## November 16, 2026 implementation addendum
+
+This remains the working client mandate. The app now defaults to its saved four-fund sample, 5% target, and 10% SGOV minimum. See [executed output](outputs/analysis.md) and [draft decision memo](docs/decision-memo.md).
+
+The user’s **current proposed fixed policy benchmark is 100% SGOV**, chosen as a capital-preservation comparison. This is a current selection, not an original Lab 13 requirement or an imported Meridian benchmark. Full-sample SGOV estimates 3.7151% annual return before additional costs and therefore fails the 5% return objective; its 100% reserve weight passes the reserve rule. SGOV is not guaranteed to preserve principal. Equal weight and full-sample inverse volatility are transparent comparison portfolios, with weights fixed across scenario-control changes. The mandate does not specify a numerical volatility ceiling or cost budget. Cost deductions and the DGS3MO review rule are disclosed scenario/monitoring implementation choices, not amendments to the original requirements.
+
+Routine stresses produce a 75–95% SGOV / complementary 25–5% VOO envelope, with IEF/LQD zero. The proposed paper-pilot range in the draft memo is based on those outputs and requires student/client review; it is not a trading authorization or confidence interval. The 85/15 reference remains unchanged. The alternative-window condition still blocks adoption. Annual rebalancing is not simulated.
+
+Earlier date-stamped verification and feedback statements are preserved as historical narrative. This revision independently checks retained prices and archives a retrospectively retrieved ALFRED vintage; it does not certify those earlier events or any human AI-off prediction.

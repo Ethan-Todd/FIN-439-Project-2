@@ -1,0 +1,37 @@
+{
+  "start_date": "2026-10-01",
+  "series": "DGS3MO",
+  "cutoff": "2026-10-31",
+  "cutoff_precision": "ALFRED calendar-date vintage; no intraday claim",
+  "source": "FRED/ALFRED; Board of Governors, H.15",
+  "downloads": {
+    "vintage": {
+      "url": "https://alfred.stlouisfed.org/graph/alfredgraph.csv?id=DGS3MO&vintage_date=2026-10-31&cosd=2026-10-01&coed=2026-10-31",
+      "file": "vintage.csv",
+      "sha256": "4baf9002042bab93be05e77faf93c2df24a3ab99efb55b8000487ae4b61184b7",
+      "retrieved_at_utc": "2026-11-16T22:14:58.746257+00:00",
+      "response_headers": {
+        "content-type": "application/csv",
+        "content-disposition": "attachment; filename=\"DGS3MO_20261031.csv\"",
+        "last-modified": "Fri, 30 Oct 2026 20:16:43 GMT",
+        "content-length": "365",
+        "date": "Mon, 16 Nov 2026 22:14:58 GMT"
+      },
+      "observations": 20
+    },
+    "current": {
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS3MO&cosd=2026-10-01",
+      "file": "current.csv",
+      "sha256": "9825841cb72d2fc0ade4afe8d89ce1f269c10e106b01c80f463efa2940b621fd",
+      "retrieved_at_utc": "2026-11-16T22:14:59.251528+00:00",
+      "response_headers": {
+        "content-type": "application/csv",
+        "content-disposition": "attachment; filename=\"DGS3MO.csv\"",
+        "last-modified": "Mon, 16 Nov 2026 21:16:57 GMT",
+        "content-length": "528",
+        "date": "Mon, 16 Nov 2026 22:14:59 GMT"
+      },
+      "observations": 30
+    }
+  }
+}

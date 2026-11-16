@@ -1,0 +1,536 @@
+{
+  "scope": "Routine validation; not Locked Changed-Input evidence",
+  "policy": {
+    "benchmark": {
+      "SGOV": 1.0,
+      "IEF": 0.0,
+      "LQD": 0.0,
+      "VOO": 0.0
+    },
+    "benchmark_status": "Current proposed fixed policy benchmark selected by the user; not an original Lab 13 requirement",
+    "benchmark_rationale": "Capital-preservation comparison; selection does not imply the 5% return objective is met"
+  },
+  "data": {
+    "price_sha256": "600b080f99353ef49334eeb0a25af10586b89659692c4ee7a08de420fbbac961",
+    "sample": "61 consecutive monthly adjusted-price observations / 60 returns",
+    "price_period_labels": [
+      "2021-09-01",
+      "2026-09-01"
+    ],
+    "timing": "Monthly labels are period labels, not availability timestamps; no historical backtest claim"
+  },
+  "assumptions": {
+    "SGOV": {
+      "expected_return": 0.03715074894092623,
+      "volatility": 0.004988809649744492
+    },
+    "IEF": {
+      "expected_return": -0.017887120384476485,
+      "volatility": 0.07653846881405668
+    },
+    "LQD": {
+      "expected_return": -0.008059913738829793,
+      "volatility": 0.09788350507629888
+    },
+    "VOO": {
+      "expected_return": 0.14176394308964727,
+      "volatility": 0.15666677896739062
+    }
+  },
+  "candidate": {
+    "weights": {
+      "SGOV": 0.85,
+      "IEF": 0.0,
+      "LQD": 0.0,
+      "VOO": 0.15
+    },
+    "gross_estimated_return": 0.05284272806323438,
+    "annual_cost": 0,
+    "net_estimated_return": 0.05284272806323438,
+    "volatility": 0.024518921108197284,
+    "reserve_weight": 0.85,
+    "verdict": "PASS",
+    "violated_rules": []
+  },
+  "baselines": {
+    "Equal weight": {
+      "weights": {
+        "SGOV": 0.25,
+        "IEF": 0.25,
+        "LQD": 0.25,
+        "VOO": 0.25
+      },
+      "gross_estimated_return": 0.0382419144768168,
+      "annual_cost": 0,
+      "net_estimated_return": 0.0382419144768168,
+      "volatility": 0.07472603610726661,
+      "reserve_weight": 0.25,
+      "verdict": "FAIL",
+      "violated_rules": [
+        "net estimated return below 5.00%"
+      ]
+    },
+    "Inverse volatility (frozen full sample)": {
+      "weights": {
+        "SGOV": 0.8710872182621238,
+        "IEF": 0.05677783195261755,
+        "LQD": 0.044396533581912125,
+        "VOO": 0.027738416203346484
+      },
+      "gross_estimated_return": 0.03492042566107482,
+      "annual_cost": 0,
+      "net_estimated_return": 0.03492042566107482,
+      "volatility": 0.013427312732592142,
+      "reserve_weight": 0.8710872182621238,
+      "verdict": "FAIL",
+      "violated_rules": [
+        "net estimated return below 5.00%"
+      ]
+    },
+    "Policy benchmark": {
+      "weights": {
+        "SGOV": 1.0,
+        "IEF": 0.0,
+        "LQD": 0.0,
+        "VOO": 0.0
+      },
+      "gross_estimated_return": 0.03715074894092623,
+      "annual_cost": 0,
+      "net_estimated_return": 0.03715074894092623,
+      "volatility": 0.004988809649744492,
+      "reserve_weight": 1.0,
+      "verdict": "FAIL",
+      "violated_rules": [
+        "net estimated return below 5.00%"
+      ]
+    }
+  },
+  "sensitivity": [
+    {
+      "scenario": {
+        "name": "Reference",
+        "dimension": "reference"
+      },
+      "candidate": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0,
+        "net_estimated_return": 0.05284272806323438,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "reference_allocation_under_stress": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0,
+        "net_estimated_return": 0.05284272806323438,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "maximum_weight_change": 0.0,
+      "stop": false
+    },
+    {
+      "scenario": {
+        "name": "All expected returns -1 percentage point",
+        "dimension": "estimates",
+        "shift": -0.01
+      },
+      "candidate": {
+        "weights": {
+          "SGOV": 0.75,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.25
+        },
+        "gross_estimated_return": 0.053304047478106485,
+        "annual_cost": 0,
+        "net_estimated_return": 0.053304047478106485,
+        "volatility": 0.03991912945467661,
+        "reserve_weight": 0.75,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "reference_allocation_under_stress": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.04284272806323438,
+        "annual_cost": 0,
+        "net_estimated_return": 0.04284272806323438,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "FAIL",
+        "violated_rules": [
+          "net estimated return below 5.00%"
+        ]
+      },
+      "maximum_weight_change": 0.1,
+      "stop": true
+    },
+    {
+      "scenario": {
+        "name": "All expected returns +1 percentage point",
+        "dimension": "estimates",
+        "shift": 0.01
+      },
+      "candidate": {
+        "weights": {
+          "SGOV": 0.95,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.05
+        },
+        "gross_estimated_return": 0.05238140864836228,
+        "annual_cost": 0,
+        "net_estimated_return": 0.05238140864836228,
+        "volatility": 0.009764800757869748,
+        "reserve_weight": 0.95,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "reference_allocation_under_stress": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.06284272806323439,
+        "annual_cost": 0,
+        "net_estimated_return": 0.06284272806323439,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "maximum_weight_change": 0.09999999999999999,
+      "stop": true
+    },
+    {
+      "scenario": {
+        "name": "VOO volatility +25%",
+        "dimension": "estimates",
+        "voo_vol_multiplier": 1.25
+      },
+      "candidate": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0,
+        "net_estimated_return": 0.05284272806323438,
+        "volatility": 0.030324162028845893,
+        "reserve_weight": 0.85,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "reference_allocation_under_stress": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0,
+        "net_estimated_return": 0.05284272806323438,
+        "volatility": 0.030324162028845893,
+        "reserve_weight": 0.85,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "maximum_weight_change": 0.0,
+      "stop": false
+    },
+    {
+      "scenario": {
+        "name": "Last 36 returns",
+        "dimension": "window",
+        "last_36": true
+      },
+      "candidate": {
+        "weights": {
+          "SGOV": 0.95,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.05
+        },
+        "gross_estimated_return": 0.05292577327186394,
+        "annual_cost": 0,
+        "net_estimated_return": 0.05292577327186394,
+        "volatility": 0.006880969030313188,
+        "reserve_weight": 0.95,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "reference_allocation_under_stress": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.069978149136154,
+        "annual_cost": 0,
+        "net_estimated_return": 0.069978149136154,
+        "volatility": 0.0190790759946735,
+        "reserve_weight": 0.85,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "maximum_weight_change": 0.09999999999999999,
+      "stop": true
+    },
+    {
+      "scenario": {
+        "name": "Annual cost 25 bp",
+        "dimension": "costs",
+        "cost": 0.0025
+      },
+      "candidate": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0.0025,
+        "net_estimated_return": 0.05034272806323438,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "reference_allocation_under_stress": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0.0025,
+        "net_estimated_return": 0.05034272806323438,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "maximum_weight_change": 0.0,
+      "stop": false
+    },
+    {
+      "scenario": {
+        "name": "Annual cost 100 bp",
+        "dimension": "costs",
+        "cost": 0.01
+      },
+      "candidate": {
+        "weights": {
+          "SGOV": 0.75,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.25
+        },
+        "gross_estimated_return": 0.06330404747810649,
+        "annual_cost": 0.01,
+        "net_estimated_return": 0.053304047478106485,
+        "volatility": 0.03991912945467661,
+        "reserve_weight": 0.75,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "reference_allocation_under_stress": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0.01,
+        "net_estimated_return": 0.04284272806323438,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "FAIL",
+        "violated_rules": [
+          "net estimated return below 5.00%"
+        ]
+      },
+      "maximum_weight_change": 0.1,
+      "stop": true
+    },
+    {
+      "scenario": {
+        "name": "SGOV minimum 25%",
+        "dimension": "constraints",
+        "minimum": 0.25
+      },
+      "candidate": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0,
+        "net_estimated_return": 0.05284272806323438,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "reference_allocation_under_stress": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0,
+        "net_estimated_return": 0.05284272806323438,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "maximum_weight_change": 0.0,
+      "stop": false
+    },
+    {
+      "scenario": {
+        "name": "SGOV minimum 100%",
+        "dimension": "constraints",
+        "minimum": 1.0
+      },
+      "candidate": null,
+      "reference_allocation_under_stress": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0,
+        "net_estimated_return": 0.05284272806323438,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "FAIL",
+        "violated_rules": [
+          "SGOV reserve below 100.00%"
+        ]
+      },
+      "maximum_weight_change": null,
+      "stop": true
+    },
+    {
+      "scenario": {
+        "name": "Return target 6%",
+        "dimension": "constraints",
+        "objective": 0.06
+      },
+      "candidate": {
+        "weights": {
+          "SGOV": 0.75,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.25
+        },
+        "gross_estimated_return": 0.06330404747810649,
+        "annual_cost": 0,
+        "net_estimated_return": 0.06330404747810649,
+        "volatility": 0.03991912945467661,
+        "reserve_weight": 0.75,
+        "verdict": "PASS",
+        "violated_rules": []
+      },
+      "reference_allocation_under_stress": {
+        "weights": {
+          "SGOV": 0.85,
+          "IEF": 0.0,
+          "LQD": 0.0,
+          "VOO": 0.15
+        },
+        "gross_estimated_return": 0.05284272806323438,
+        "annual_cost": 0,
+        "net_estimated_return": 0.05284272806323438,
+        "volatility": 0.024518921108197284,
+        "reserve_weight": 0.85,
+        "verdict": "FAIL",
+        "violated_rules": [
+          "net estimated return below 6.00%"
+        ]
+      },
+      "maximum_weight_change": 0.1,
+      "stop": true
+    }
+  ],
+  "signal": {
+    "yield_percent": 4.18,
+    "sgov_historical_estimate": 0.03715074894092623,
+    "gap_percentage_points": 0.4649251059073767,
+    "status": "NO YIELD SHORTFALL FLAG",
+    "action": "Continue monitoring; this flag does not authorize adoption or establish expected SGOV return.",
+    "cutoff": "2026-10-31",
+    "observation_date": "2026-10-29",
+    "retrieved_at_utc": "2026-11-16T22:14:58.746257+00:00",
+    "evidence": "signal_sources/2026-10-31/metadata.json",
+    "revised_shared_dates": 0,
+    "later_observations": 10,
+    "availability": "Retrospectively retrieved ALFRED date vintage; not contemporaneous capture or intraday proof."
+  },
+  "decision": "PILOT ONLY / NOT APPROVED FOR ADOPTION",
+  "adoption_blocks": [
+    "Alternative-window change exceeds the mandate five-percentage-point adoption limit"
+  ],
+  "stress_allocation_envelope": {
+    "SGOV": [
+      0.75,
+      0.95
+    ],
+    "IEF": [
+      0.0,
+      0.0
+    ],
+    "LQD": [
+      0.0,
+      0.0
+    ],
+    "VOO": [
+      0.05,
+      0.25
+    ]
+  },
+  "disclosures": [
+    "Annual rebalancing is NOT simulated. No realized-performance backtest.",
+    "Costs are deterministic annual portfolio-level deductions, not estimated trading costs.",
+    "The 5% objective is tested after the stated cost deduction as a conservative sensitivity convention; the mandate did not specify costs.",
+    "Stress envelope is not a confidence interval, suitable allocation range, or trading permission.",
+    "Human evidence, approval, and submission materials remain incomplete."
+  ]
+}

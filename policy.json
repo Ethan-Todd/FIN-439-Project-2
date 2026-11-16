@@ -1,0 +1,10 @@
+{
+  "benchmark": {
+    "SGOV": 1.0,
+    "IEF": 0.0,
+    "LQD": 0.0,
+    "VOO": 0.0
+  },
+  "benchmark_status": "Current proposed fixed policy benchmark selected by the user; not an original Lab 13 requirement",
+  "benchmark_rationale": "Capital-preservation comparison; selection does not imply the 5% return objective is met"
+}

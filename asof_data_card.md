@@ -1,5 +1,7 @@
 # FRED/ALFRED As-Of Validation and Data Card
 
+> Historical narrative preserved. The November 16 audit did not verify the original downloads or feedback exchange. The current evidence-backed monitor and qualified admission decision are in [docs/signal-data-card.md](docs/signal-data-card.md), supported by newly archived sources. Earlier “admit” language below must not be read as proof of a historical trading process.
+
 ## Required October 5, 2026 check
 
 The `asof_app.py` downloads produced the following values as known on October 5, 2026:

@@ -6,69 +6,42 @@ import statistics
 import sys
 
 
-# Editable inputs
-SLEEVES = {
-    "Treasury bills": {"expected_return": 0.035, "volatility": 0.005},
-    "Treasury 10-year note": {"expected_return": 0.043, "volatility": 0.070},
-    "Investment-grade bond fund": {"expected_return": 0.050, "volatility": 0.060},
-    "Global equity index fund": {"expected_return": 0.080, "volatility": 0.160},
-}
+# Project 2 policy; the separate Meridian exercise remains in mandate.py.
+from pathlib import Path
+import numpy as np
 
-CORRELATIONS = {
-    "Treasury bills": {
-        "Treasury bills": 1.00,
-        "Treasury 10-year note": 0.10,
-        "Investment-grade bond fund": 0.05,
-        "Global equity index fund": 0.00,
-    },
-    "Treasury 10-year note": {
-        "Treasury bills": 0.10,
-        "Treasury 10-year note": 1.00,
-        "Investment-grade bond fund": 0.80,
-        "Global equity index fund": -0.10,
-    },
-    "Investment-grade bond fund": {
-        "Treasury bills": 0.05,
-        "Treasury 10-year note": 0.80,
-        "Investment-grade bond fund": 1.00,
-        "Global equity index fund": 0.25,
-    },
-    "Global equity index fund": {
-        "Treasury bills": 0.00,
-        "Treasury 10-year note": -0.10,
-        "Investment-grade bond fund": 0.25,
-        "Global equity index fund": 1.00,
-    },
-}
-
-OBJECTIVE_RETURN = 0.065
-MINIMUM_RESERVE = 0.03
-RESERVE_ELIGIBLE = {"Treasury bills", "Treasury 10-year note"}
+ROOT = Path(__file__).resolve().parent
+UNIVERSE = ("SGOV", "IEF", "LQD", "VOO")
+OBJECTIVE_RETURN = 0.05
+MINIMUM_RESERVE = 0.10
+RESERVE_ELIGIBLE = {"SGOV"}
 
 
 def validate_inputs(sleeves, correlations):
     names = list(sleeves)
+    if not names:
+        raise ValueError("at least one asset is required")
     if set(correlations) != set(names):
-        raise ValueError("correlation table rows must match the sleeve names")
-
+        raise ValueError("correlation table rows must match the asset names")
     for name in names:
         if set(correlations[name]) != set(names):
-            raise ValueError(f"correlation table columns for {name} must match the sleeve names")
-        if sleeves[name]["volatility"] <= 0.0:
-            raise ValueError(f"volatility for {name} must be greater than zero")
-
-    for row_name in names:
-        for column_name in names:
-            correlation = correlations[row_name][column_name]
-            if correlation < -1.0 or correlation > 1.0:
-                raise ValueError(
-                    f"correlation for {row_name} and {column_name} must be between -1 and 1"
-                )
-            reverse = correlations[column_name][row_name]
-            if not math.isclose(correlation, reverse, abs_tol=1e-12):
-                raise ValueError(
-                    f"correlation table is not symmetric for {row_name} and {column_name}"
-                )
+            raise ValueError("correlation columns must match the asset names")
+        if not math.isfinite(sleeves[name]["expected_return"]):
+            raise ValueError(f"expected return for {name} must be finite")
+        vol = sleeves[name]["volatility"]
+        if not math.isfinite(vol) or vol <= 0:
+            raise ValueError(f"volatility for {name} must be finite and greater than zero")
+    matrix = np.array([[correlations[a][b] for b in names] for a in names], dtype=float)
+    if not np.isfinite(matrix).all():
+        raise ValueError("correlations must be finite")
+    if (abs(matrix) > 1 + 1e-12).any():
+        raise ValueError("correlations must be between -1 and 1")
+    if not np.allclose(matrix, matrix.T, atol=1e-12, rtol=0):
+        raise ValueError("correlation matrix must be symmetric")
+    if not np.allclose(np.diag(matrix), 1, atol=1e-12, rtol=0):
+        raise ValueError("correlation matrix diagonal must equal one")
+    if np.linalg.eigvalsh(matrix).min() < -1e-10:
+        raise ValueError("correlation matrix must be positive semidefinite")
 
 
 def build_covariance_matrix(sleeves, correlations):
@@ -86,17 +59,21 @@ def build_covariance_matrix(sleeves, correlations):
     }
 
 
-def benchmark_weights(sleeves):
-    return {
-        name: (
-            0.40
-            if name == "Investment-grade bond fund"
-            else 0.60
-            if name == "Global equity index fund"
-            else 0.0
-        )
-        for name in sleeves
-    }
+def benchmark_weights(sleeves, weights=None):
+    """Require explicit policy weights; never infer a benchmark from asset names."""
+    if weights is None:
+        raise ValueError("Policy benchmark pending: the client must choose fixed weights")
+    validate_weights(weights, sleeves)
+    return dict(weights)
+
+
+def validate_weights(weights, sleeves):
+    if set(weights) != set(sleeves):
+        raise ValueError("weights must contain exactly the permitted assets")
+    if any(not math.isfinite(w) or w < 0 for w in weights.values()):
+        raise ValueError("weights must be finite and long-only")
+    if not math.isclose(sum(weights.values()), 1, abs_tol=1e-10):
+        raise ValueError("weights must sum to one; borrowing is prohibited")
 
 
 def equal_weights(sleeves):
@@ -124,6 +101,8 @@ def portfolio_volatility(weights, covariance_matrix):
         for row_name in weights
         for column_name in weights
     )
+    if not math.isfinite(variance) or variance < -1e-12:
+        raise ValueError("portfolio variance must be finite and nonnegative")
     return math.sqrt(max(0.0, variance))
 
 
@@ -154,9 +133,11 @@ def find_lowest_risk_mix(
     step_points=5,
 ):
     """Return the lowest-volatility feasible long-only mix, or None."""
-    if step_points <= 0 or 100 % step_points != 0:
+    if not isinstance(step_points, int) or isinstance(step_points, bool) or step_points <= 0 or 100 % step_points != 0:
         raise ValueError("step_points must be a positive divisor of 100")
-    if minimum_reserve < 0.0 or minimum_reserve > 1.0:
+    if not math.isfinite(objective_return):
+        raise ValueError("objective return must be finite")
+    if not math.isfinite(minimum_reserve) or minimum_reserve < 0.0 or minimum_reserve > 1.0:
         raise ValueError("minimum reserve must be between 0 and 1")
 
     validate_inputs(sleeves, correlations)
@@ -175,7 +156,7 @@ def find_lowest_risk_mix(
         }
         expected_return = portfolio_expected_return(weights, sleeves)
         reserve_weight = reserve_eligible_weight(weights, reserve_eligible)
-        if expected_return < objective_return or reserve_weight < minimum_reserve:
+        if expected_return + 1e-12 < objective_return or reserve_weight + 1e-12 < minimum_reserve:
             continue
         volatility = portfolio_volatility(weights, covariance_matrix)
         if best is None or volatility < best["volatility"]:
@@ -213,7 +194,7 @@ def _csv_text(source):
         return csv_file.read()
 
 
-def estimate_from_price_csv(source, last_36=False):
+def estimate_from_price_csv(source, last_36=False, required_returns=None):
     """Estimate annual return, volatility, and correlations from monthly prices."""
     reader = csv.reader(io.StringIO(_csv_text(source)))
     try:
@@ -237,6 +218,8 @@ def estimate_from_price_csv(source, last_36=False):
         date = _parse_date(row[0])
         if dates and date <= dates[-1]:
             raise ValueError("price dates must be oldest first with no duplicates")
+        if dates and date.year * 12 + date.month != dates[-1].year * 12 + dates[-1].month + 1:
+            raise ValueError("prices must have exactly one observation in each consecutive month")
         dates.append(date)
         for ticker, value in zip(tickers, row[1:]):
             try:
@@ -245,8 +228,8 @@ def estimate_from_price_csv(source, last_36=False):
                 raise ValueError(
                     f"invalid price for {ticker} on row {row_number}"
                 ) from error
-            if price <= 0.0:
-                raise ValueError(f"price for {ticker} must be greater than zero")
+            if not math.isfinite(price) or price <= 0.0:
+                raise ValueError(f"price for {ticker} must be finite and greater than zero")
             prices[ticker].append(price)
 
     if len(dates) < 3:
@@ -259,6 +242,10 @@ def estimate_from_price_csv(source, last_36=False):
         ]
         for ticker, values in prices.items()
     }
+    if last_36 and len(dates) < 37:
+        raise ValueError("last-36 window requires at least 37 monthly prices (36 returns)")
+    if required_returns is not None and len(dates) - 1 < required_returns:
+        raise ValueError(f"this analysis requires at least {required_returns + 1} monthly prices")
     if last_36:
         returns = {ticker: values[-36:] for ticker, values in returns.items()}
 
@@ -305,28 +292,16 @@ def estimate_from_price_csv(source, last_36=False):
     return sleeves, correlations
 
 
-def build_portfolios(
-    sleeves,
-    correlations=None,
-    objective_return=OBJECTIVE_RETURN,
-    reserve_eligible=RESERVE_ELIGIBLE,
-    minimum_reserve=MINIMUM_RESERVE,
-    step_points=5,
-):
-    portfolios = {
-        "Benchmark": benchmark_weights(sleeves),
-        "Equal weight": equal_weights(sleeves),
-        "Inverse volatility": inverse_volatility_weights(sleeves),
-    }
+def build_portfolios(sleeves, correlations=None, objective_return=OBJECTIVE_RETURN,
+                     reserve_eligible=RESERVE_ELIGIBLE, minimum_reserve=MINIMUM_RESERVE,
+                     step_points=5, benchmark=None):
+    portfolios = {"Equal weight": equal_weights(sleeves),
+                  "Inverse volatility": inverse_volatility_weights(sleeves)}
+    if benchmark is not None:
+        portfolios["Policy benchmark"] = benchmark_weights(sleeves, benchmark)
     if correlations is not None:
-        candidate = find_lowest_risk_mix(
-            sleeves,
-            correlations,
-            objective_return,
-            reserve_eligible,
-            minimum_reserve,
-            step_points=step_points,
-        )
+        candidate = find_lowest_risk_mix(sleeves, correlations, objective_return,
+                                       reserve_eligible, minimum_reserve, step_points)
         if candidate is not None:
             portfolios["Candidate (lowest risk)"] = candidate["weights"]
     return portfolios
@@ -362,31 +337,9 @@ def print_portfolio(
 
 
 def main():
-    try:
-        validate_inputs(SLEEVES, CORRELATIONS)
-        covariance_matrix = build_covariance_matrix(SLEEVES, CORRELATIONS)
-        portfolios = build_portfolios(
-            SLEEVES,
-            CORRELATIONS,
-            OBJECTIVE_RETURN,
-            RESERVE_ELIGIBLE,
-            MINIMUM_RESERVE,
-        )
-        print(f"Objective return: {OBJECTIVE_RETURN:.2%}")
-        print(f"Reserve minimum: {MINIMUM_RESERVE:.2%}")
-        for name, weights in portfolios.items():
-            print_portfolio(
-                name,
-                weights,
-                SLEEVES,
-                covariance_matrix,
-                OBJECTIVE_RETURN,
-                RESERVE_ELIGIBLE,
-                MINIMUM_RESERVE,
-            )
-    except ValueError as error:
-        print(f"ERROR: {error}", file=sys.stderr)
-        return 1
+    from analysis import build_report
+    import json
+    print(json.dumps(build_report(), indent=2, allow_nan=False))
     return 0
 
 

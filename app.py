@@ -1,145 +1,87 @@
 from copy import deepcopy
-
+import json
+from pathlib import Path
 import streamlit as st
+import analysis as a
+import portfolio as p
+from signal_monitor import signal_status
 
-import portfolio as engine
+st.set_page_config(page_title='Project 2 Portfolio Review', layout='wide')
+st.title('Project 2 — Portfolio Review')
+st.caption('OpenAI Codex assisted with code, testing, and documentation. Student review and ownership of the final analysis and decision remain required.')
+st.caption('Educational analysis, not investment advice.')
+st.write('Working mandate: 5% estimated annual return, at least 10% SGOV, fully invested and long-only in SGOV/IEF/LQD/VOO.')
+st.warning('Pilot only. Historical estimates are not realized performance. Annual rebalancing is NOT simulated.')
 
-
-st.set_page_config(page_title="Portfolio Risk Search", layout="wide")
-st.title("Lowest-Risk Portfolio Search")
-st.caption("Built with AI help, a learning demonstration, not investment advice.")
-
-objective_return = st.sidebar.number_input(
-    "Objective return (%)", min_value=-100.0, max_value=100.0, value=6.5, step=0.1
-) / 100.0
-minimum_reserve = st.sidebar.number_input(
-    "Minimum reserve-eligible weight (%)",
-    min_value=0.0,
-    max_value=100.0,
-    value=3.0,
-    step=1.0,
-) / 100.0
-uploaded_prices = st.sidebar.file_uploader("Upload prices.csv", type="csv")
-use_last_36 = st.sidebar.toggle("Use only the last 36 monthly returns", value=False)
+uploaded = st.sidebar.file_uploader('Optional replacement monthly adjusted prices (61 rows)', type='csv')
+last_36 = st.sidebar.toggle('Use last 36 monthly returns', value=False)
+objective = st.sidebar.number_input('Scenario return objective (%)', value=5.0, min_value=-100.0, max_value=100.0, step=.5) / 100
+reserve = st.sidebar.number_input('Scenario minimum SGOV (%)', value=10.0, min_value=0.0, max_value=100.0, step=5.0) / 100
+cost = st.sidebar.number_input('Annual cost deduction (basis points)', value=0, min_value=0, max_value=1000, step=25) / 10000
+shift = st.sidebar.number_input('All expected returns shift (percentage points)', value=0.0, min_value=-50.0, max_value=50.0, step=.5) / 100
+st.sidebar.caption('Scenario controls do not amend the mandate or change baseline weights. Costs are hypothetical annual deductions, not simulated trading costs.')
 
 try:
-    if uploaded_prices is None:
-        source_label = "Meridian inputs"
-        dataset_key = "meridian"
-        baseline_sleeves = deepcopy(engine.SLEEVES)
-        baseline_correlations = deepcopy(engine.CORRELATIONS)
-        current_sleeves = deepcopy(baseline_sleeves)
-        current_correlations = deepcopy(baseline_correlations)
-        default_reserve = set(engine.RESERVE_ELIGIBLE)
-    else:
-        source_label = "Uploaded CSV"
-        dataset_key = f"csv_{uploaded_prices.name}"
-        baseline_sleeves, baseline_correlations = engine.estimate_from_price_csv(
-            uploaded_prices, last_36=False
-        )
-        if use_last_36:
-            current_sleeves, current_correlations = engine.estimate_from_price_csv(
-                uploaded_prices, last_36=True
-            )
-        else:
-            current_sleeves = deepcopy(baseline_sleeves)
-            current_correlations = deepcopy(baseline_correlations)
-        default_reserve = set()
-except (UnicodeDecodeError, ValueError) as error:
-    st.error(f"Could not load the inputs: {error}")
+    source = uploaded if uploaded is not None else a.ROOT / 'prices.csv'
+    base, base_corr = a.load_prices(source)
+    current, corr = a.load_prices(source, last_36)
+    current = deepcopy(current)
+    for values in current.values():
+        values['expected_return'] += shift
+    original = a.optimize(base, base_corr)
+    candidate = a.optimize(current, corr, cost, objective, reserve)
+    baselines = a.fixed_baselines(base)
+except (ValueError, UnicodeDecodeError, OSError) as error:
+    st.error(f'Inputs rejected: {error}')
     st.stop()
 
-st.sidebar.caption(f"Data source: {source_label}")
-
-st.subheader("Expected-return assumptions")
-return_columns = st.columns(min(3, len(current_sleeves)))
-for index, (asset, values) in enumerate(current_sleeves.items()):
-    with return_columns[index % len(return_columns)]:
-        values["expected_return"] = st.number_input(
-            f"{asset} expected return (%)",
-            min_value=-100.0,
-            max_value=100.0,
-            value=float(values["expected_return"] * 100.0),
-            step=0.1,
-            key=f"return_{dataset_key}_{use_last_36}_{asset}",
-        ) / 100.0
-
-st.subheader("Reserve eligibility")
-reserve_columns = st.columns(min(3, len(current_sleeves)))
-reserve_eligible = set()
-for index, asset in enumerate(current_sleeves):
-    with reserve_columns[index % len(reserve_columns)]:
-        if st.checkbox(
-            asset,
-            value=asset in default_reserve,
-            key=f"reserve_{dataset_key}_{asset}",
-        ):
-            reserve_eligible.add(asset)
-
-
-def search(sleeves, correlations):
-    return engine.find_lowest_risk_mix(
-        sleeves=sleeves,
-        correlations=correlations,
-        objective_return=objective_return,
-        reserve_eligible=reserve_eligible,
-        minimum_reserve=minimum_reserve,
-        step_points=5,
-    )
-
-
-def show_result(title, result):
-    st.markdown(f"### {title}")
-    if result is None:
-        st.warning("no mix meets the objective")
-        return
-    st.metric("Expected return", f"{result['expected_return']:.2%}")
-    st.metric("Volatility", f"{result['volatility']:.2%}")
-    st.metric(
-        "Reserve-eligible weight", f"{result['reserve_eligible_weight']:.2%}"
-    )
-    st.table(
-        [
-            {"Asset": asset, "Weight": f"{weight:.2%}"}
-            for asset, weight in result["weights"].items()
-        ]
-    )
-
-
-try:
-    current_result = search(current_sleeves, current_correlations)
-    baseline_result = search(baseline_sleeves, baseline_correlations)
-except ValueError as error:
-    st.error(f"Cannot run the search: {error}")
-    st.stop()
-
-left, right = st.columns(2)
-with left:
-    show_result("Current controls", current_result)
-with right:
-    baseline_title = (
-        "Inputs as loaded — Meridian"
-        if uploaded_prices is None
-        else "Inputs as loaded — CSV, all months"
-    )
-    show_result(baseline_title, baseline_result)
-
-st.subheader("Largest weight change")
-if current_result is None or baseline_result is None:
-    st.write("Unavailable because one of the two searches has no feasible mix.")
+policy = json.loads((a.ROOT / 'policy.json').read_text())
+if policy['benchmark'] is None:
+    st.warning('Policy benchmark pending client choice. The two transparent comparisons below are not an invented Lab 13 benchmark.')
 else:
-    changes = {
-        asset: (
-            current_result["weights"][asset] - baseline_result["weights"][asset]
-        )
-        * 100.0
-        for asset in current_sleeves
-    }
-    largest_asset = max(changes, key=lambda asset: abs(changes[asset]))
-    st.metric(largest_asset, f"{changes[largest_asset]:+.1f} percentage points")
+    st.write('Current proposed fixed policy benchmark:', policy['benchmark'])
+    st.caption(policy['benchmark_status'] + '. ' + policy['benchmark_rationale'])
+st.subheader('Candidate and fixed baseline comparisons')
+st.caption('All rows use the same current estimates and cost deduction. Baseline weights are frozen from the full input sample; window, costs, target, reserve, and return shifts do not reweight them.')
+rows = []
+portfolios = dict(baselines)
+if candidate is not None:
+    portfolios['Constrained portfolio'] = candidate['weights']
+else:
+    st.error('STOP: no mix meets the objective under the scenario controls.')
+for name, weights in portfolios.items():
+    scenario = a.evaluate(weights, current, corr, cost, objective, reserve)
+    mandate = a.evaluate(weights, current, corr, cost)
+    rows.append({'Portfolio': name, **{t: f'{weights[t]:.2%}' for t in p.UNIVERSE},
+                 'Gross estimate': f'{scenario["gross_estimated_return"]:.2%}',
+                 'Net estimate': f'{scenario["net_estimated_return"]:.2%}',
+                 'Volatility': f'{scenario["volatility"]:.2%}',
+                 'Working mandate': mandate['verdict'], 'Mandate violations': '; '.join(mandate['violated_rules']) or 'None',
+                 'Scenario verdict': scenario['verdict'], 'Scenario violations': '; '.join(scenario['violated_rules']) or 'None'})
+st.dataframe(rows, hide_index=True, width='stretch')
+st.subheader('Process stopping conditions')
+window_s, window_c = a.load_prices(source, True)
+window_candidate = a.optimize(window_s, window_c)
+change = None if original is None or window_candidate is None else max(abs(original['weights'][t] - window_candidate['weights'][t]) for t in p.UNIVERSE)
+if change is None or change > .05 + 1e-12:
+    st.error('DO NOT ADOPT: the reference versus 36-month window is infeasible or exceeds the mandate five-percentage-point stability limit.')
+if change is not None:
+    st.metric('Largest reference / 36-month allocation change', f'{change * 100:.1f} percentage points')
+st.caption('Paper-pilot range: 75–95% SGOV and complementary 25–5% VOO, from saved routine stresses. This range describes sensitivity; it does not relax the five-point adoption limit. Adoption requires documented refreshed inputs and a reasonable alternative-window comparison with feasible portfolios and no asset-weight change above five points, plus resolved review flags and human authorization.')
+st.write('Halt selection on invalid inputs or infeasibility. Do not adopt when the alternative-window stability test fails, the signal is quarantined or requires review, or the policy benchmark is unresolved. A stress failure requests review; stress settings are not new client constraints.')
 
-st.caption(
-    "Search method: every long-only portfolio in 5-percentage-point steps. "
-    "CSV estimates use arithmetic monthly mean × 12, sample standard deviation × √12, "
-    "and correlations from aligned monthly returns."
-)
+st.subheader('Point-in-time reserve-yield monitor')
+signal = signal_status(base['SGOV']['expected_return'])
+st.json(signal)
+st.caption('Proposed monitoring rule: if the vintage DGS3MO yield is below the full-sample SGOV estimate, review the reserve estimate before adoption. Yield is not SGOV total return. No automatic allocation change. The cutoff is a calendar-date vintage, not intraday proof.')
+
+with st.expander('Estimates and limitations'):
+    st.json(current)
+    st.write('Monthly arithmetic mean × 12; sample standard deviation × √12; sample covariance; exhaustive five-point grid. Monthly labels do not establish availability. Adjusted-close history is a retained download, not a vintage backtest. Taxes, turnover, realized returns, and annual rebalancing are not simulated. No numerical volatility cap was supplied in the mandate.')
+with st.expander('Reproducible saved routine sensitivity report'):
+    report_path = a.ROOT / 'outputs' / 'analysis.md'
+    if report_path.exists():
+        st.caption('This frozen report uses bundled prices and default policy, not the current interactive scenario.')
+        st.markdown(report_path.read_text())
+    else:
+        st.info('Run python analysis.py --write to generate the report.')

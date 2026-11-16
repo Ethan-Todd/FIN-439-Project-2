@@ -1,0 +1,18 @@
+test_defaults_controls_and_fixed_baselines (test_app.AppTests.test_defaults_controls_and_fixed_baselines) ... 2026-11-16 17:40:59.162 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_analytic_two_asset_risk (test_finance.FinanceTests.test_analytic_two_asset_risk) ... ok
+test_archived_signal_and_tamper (test_finance.FinanceTests.test_archived_signal_and_tamper) ... ok
+test_bad_matrices (test_finance.FinanceTests.test_bad_matrices) ... ok
+test_cost_accounting_and_sensitivity (test_finance.FinanceTests.test_cost_accounting_and_sensitivity) ... ok
+test_invalid_csv (test_finance.FinanceTests.test_invalid_csv) ... ok
+test_known_answer_and_independent_covariance (test_finance.FinanceTests.test_known_answer_and_independent_covariance) ... ok
+test_policy_baseline_and_weights (test_finance.FinanceTests.test_policy_baseline_and_weights) ... ok
+test_publication_gate_known_answer (test_finance.FinanceTests.test_publication_gate_known_answer) ... ok
+test_retained_prices_match_sources (test_finance.FinanceTests.test_retained_prices_match_sources) ... ok
+test_signal_rule_and_fail_closed (test_finance.FinanceTests.test_signal_rule_and_fail_closed) ... ok
+test_window_and_failure (test_finance.FinanceTests.test_window_and_failure) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.515s
+
+OK

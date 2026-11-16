@@ -1,0 +1,80 @@
+{
+  "scope": "Routine AI-assisted verification, not designated Locked Changed-Input execution",
+  "executed_at_utc": "2026-11-16T22:41:02.925441+00:00",
+  "python": "3.14.7",
+  "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+  "streamlit": "1.66.0",
+  "numpy": "2.5.4",
+  "base_git_commit": "ab163ab651bfe83022d93907ae9805b4123d0943",
+  "submission_freeze": "Not committed or pushed by this verification",
+  "checks": [
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "evidence": "outputs/test-results.txt"
+    },
+    {
+      "command": [
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "evidence": "outputs/dependency-check.txt"
+    },
+    {
+      "command": [
+        "sec-buffett-quality/scripts/validate_known_answer.py",
+        "--outputs",
+        "sec-buffett-quality/outputs"
+      ],
+      "exit_code": 0,
+      "evidence": "outputs/sec-validation.txt"
+    },
+    {
+      "command": [
+        "analysis.py",
+        "--write"
+      ],
+      "exit_code": 0,
+      "evidence": "outputs/analysis-run.txt"
+    }
+  ],
+  "deterministic_analysis": true,
+  "server_health": {
+    "status": "PASS",
+    "http_code": 200,
+    "body": "ok",
+    "note": "HTTP health plus Streamlit AppTest; not a human usability review"
+  },
+  "source_sha256": {
+    "README.md": "0cd534b55333e3b7fe4713e392c30f8c2166b96e20fa6cbc1d3c2bbb9a5a02ed",
+    "analysis.py": "1ce44f44d69c737f1d47e9c023c6e934d7e23d35d3bf8a05b39948875697b896",
+    "app.py": "9e759d69943ae8fdd2628289dd0e0f7ba0bea724086015b01a4426f9bd4034cf",
+    "asof.py": "5366e2289c1ad9d3cf92792565f134624e47ff8445fd3583e6da8f9397502fb4",
+    "asof_app.py": "43518487faf32a26ab52ef3ece2c185fccd2ff891b3cff6c45fdebd6c1387a38",
+    "docs/decision-memo.md": "b2eff0f324dd64074e110c934b0e2d464bf6974cef76af73831032ddabe2c980",
+    "docs/human-evidence.md": "578f6d7cbad3f0ba12f2642c7418dab5db2a08064d91ad02c82c8f015bd3b05b",
+    "docs/rubric-status.md": "ec2ec96d0fc18f4c42ee8bc4ff8e82ec06632bfa721c91aad75552d00b61ddc9",
+    "docs/signal-data-card.md": "8985ba47310ea915964a02264814534380f011c0fe52ad672a0a9de118a0b09c",
+    "docs/validation-and-ai-use.md": "3cfce5864f3d4c815134f73e4b7c65f9445c76a3872b7c74cdb2829ee3c7d300",
+    "fetch_signal.py": "8a12f034740ad73ca3470efa102258312ea6d9756fe40397a762b9a588ea12d0",
+    "mandate.py": "0c3325e2cb05d17f270b9d39ce628ca02505a9b7c9510142d9fd7bcf7826ba2b",
+    "policy.json": "17c127066fdaf07602e60a9d9ace075d8ffa84cea5dc56f41761dbd21a623631",
+    "portfolio.py": "0f1e8102d8da432066466b9e2d5007482df9720e23977e06e0906bae1a30bd9c",
+    "prices.csv": "600b080f99353ef49334eeb0a25af10586b89659692c4ee7a08de420fbbac961",
+    "requirements-lock.txt": "667145601ad4cb3d0800830a6a00cb5f253c387d3618f5eef696514295471cd3",
+    "signal_monitor.py": "e3093fd65300741f87d63c9180367b2e93eae33a694b57f2f4dea1aa83dc029d",
+    "tests/test_app.py": "07796a081f20b021f9baaad3798de2abb24b4f41ce166104a804b09038b5cf1e",
+    "tests/test_finance.py": "2fc151fba38d401d28dcf8370dbd56ca9992d48875c40a85e5459412a92268e7",
+    "verify.py": "ec3f0ea271e05ca45913ad8a41e06727779ec09a58651957a554ae830e840bbd"
+  },
+  "passed": true
+}
