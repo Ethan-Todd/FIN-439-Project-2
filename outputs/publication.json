@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-11-16T22:43:03.093338+00:00",
+  "repository": "https://github.com/Ethan-Todd/FIN-439-Project-2",
+  "implementation_commit": "b96be6769fd4c4e944d5506122e5c7d48881fb6f",
+  "push": "confirmed by successful git push",
+  "scope": "Interim Project 2 implementation and routine validation, not final submission or human prediction",
+  "post_verification_changed_files": [
+    "README.md",
+    "docs/human-evidence.md",
+    "docs/rubric-status.md",
+    "docs/validation-and-ai-use.md"
+  ],
+  "runtime_sources_match_verification": true,
+  "missing": [
+    "Human AI-off precommitted prediction and designated execution record",
+    "Three videos and actual transcripts",
+    "Final student review and ownership confirmation",
+    "Instructor/video access and Brightspace submission checks"
+  ],
+  "note": "Publication wording in documents was updated after verification; tested runtime sources are unchanged. Manifest pins implementation files to the published commit."
+}

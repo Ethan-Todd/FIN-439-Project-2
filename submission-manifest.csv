@@ -1,9 +1,9 @@
 item,required,location_or_url,title,duration_or_as_of,timestamp_index,access_checked,frozen_or_commit_id,notes
 Research-Evolution.pdf,no,,,,,,,Exempt for current Project 2; Edition A/B not submitted
-Repository,yes,https://github.com/Ethan-Todd/FIN-439-Project-2,Project 2 portfolio review,,,not checked,UNFROZEN,Working-tree changes not pushed
-Visible executed output,yes,https://github.com/Ethan-Todd/FIN-439-Project-2/blob/main/outputs/analysis.md,Routine portfolio results,2026-10-31 signal cutoff / Nov 16 execution,,not checked,UNFROZEN,"Planned URL; includes inputs, verdicts, and decision"
-Decision memo or deck,yes,https://github.com/Ethan-Todd/FIN-439-Project-2/blob/main/docs/decision-memo.md,Decision memo,,,not checked,UNFROZEN,Markdown per Project 2; draft pending student review
-Validation-and-AI-Use.md,yes,https://github.com/Ethan-Todd/FIN-439-Project-2/blob/main/docs/validation-and-ai-use.md,Validation and AI use,2026-11-16,,not checked,UNFROZEN,Human locked record missing; planned URL
+Repository,yes,https://github.com/Ethan-Todd/FIN-439-Project-2,Project 2 portfolio review,,,push confirmed; instructor access not checked,b96be6769fd4c4e944d5506122e5c7d48881fb6f,Implementation snapshot pushed; final submission freeze and human evidence incomplete
+Visible executed output,yes,https://github.com/Ethan-Todd/FIN-439-Project-2/blob/b96be6769fd4c4e944d5506122e5c7d48881fb6f/outputs/analysis.md,Routine portfolio results,2026-10-31 signal cutoff / Nov 16 execution,,push confirmed; instructor access not checked,b96be6769fd4c4e944d5506122e5c7d48881fb6f,Published routine output; not designated locked experiment
+Decision memo or deck,yes,https://github.com/Ethan-Todd/FIN-439-Project-2/blob/b96be6769fd4c4e944d5506122e5c7d48881fb6f/docs/decision-memo.md,Decision memo,,,push confirmed; instructor access not checked,b96be6769fd4c4e944d5506122e5c7d48881fb6f,Published Markdown draft; final student review pending
+Validation-and-AI-Use.md,yes,https://github.com/Ethan-Todd/FIN-439-Project-2/blob/b96be6769fd4c4e944d5506122e5c7d48881fb6f/docs/validation-and-ai-use.md,Validation and AI use,2026-11-16,,push confirmed; instructor access not checked,b96be6769fd4c4e944d5506122e5c7d48881fb6f,Published validation; human locked record missing
 Video 1,yes,,,,,not checked,,MISSING; YouTube URL required; maximum 3:00; actual duration/timestamp index unknown
 Transcript Video 1,yes,,,,,not checked,,MISSING; do not substitute an AI script for an actual transcript
 Video 2,yes,,,,,not checked,,MISSING; YouTube URL required; maximum 5:00; actual duration/timestamp index unknown
