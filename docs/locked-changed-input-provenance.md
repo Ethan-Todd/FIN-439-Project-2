@@ -11,3 +11,7 @@
 - The complete Locked Changed-Input Record remains **incomplete**: qualifying chronology/eligibility, designated execution evidence, actual decision effect, and the student's reconciliation are unresolved.
 
 This record preserves the user's words and known provenance only. It does not mark the assignment requirement satisfied or authorize running the test before chronology is clarified. The working mandate and paper-pilot recommendation remain unchanged.
+
+## Superseded proposal
+
+The user subsequently selected a different allocation in [the second prediction](locked-changed-input-prediction-2.md). That is the active proposed record; this first prediction is retained unchanged as historical evidence, not the designated active test. See [second-record provenance](locked-changed-input-provenance-2.md).

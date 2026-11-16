@@ -58,7 +58,7 @@ The SEC app's number-membership check can detect an unprinted number, but cannot
 
 ## Locked Changed-Input Record — MISSING HUMAN EVIDENCE
 
-No qualifying prediction or execution record is supplied here. Available history begins with results and code together on November 3; it does not establish a prediction committed/pushed before execution, or AI-off authorship. The agent has neither written the student's prediction nor run a designated locked experiment. Do not retrofit these routine tests into that record.
+The active user-provided prediction is [the second prediction](locked-changed-input-prediction-2.md), preserved verbatim with [separate provenance](locked-changed-input-provenance-2.md). It supersedes the earlier 75/25 proposal without erasing that history. Confirmation of AI-off authorship and unrun status for the new designated test, the student's explicit expected decision effect, designated execution evidence, and reconciliation remain incomplete. The November 3 history does not establish earlier human prediction chronology. The agent has not composed the student's prediction or run the designated experiment. Routine AI-assisted tests must not be relabeled as the locked record.
 
 Follow [human evidence steps](human-evidence.md) personally with AI closed. Preserve the original prediction's GitHub commit link and a later execution/result commit, with the required old/new units, expected and actual direction, decision effect, and reconciliation. No prediction or expected outcome is suggested in this document.
 
