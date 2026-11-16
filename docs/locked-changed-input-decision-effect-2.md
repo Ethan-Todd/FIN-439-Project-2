@@ -1,0 +1,1 @@
+Based on the changes I am going to to keep the original 85% SGOV / 15% VOO portfolio instead of moving to 10% SGOV / 90% VOO, because the extra return would not justify the much larger volatility and high risk
