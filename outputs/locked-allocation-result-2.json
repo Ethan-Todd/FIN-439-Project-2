@@ -1,0 +1,89 @@
+{
+  "execution_timestamp_utc": "2026-11-17T21:44:09.928386+00:00",
+  "execution_ai_off": "User asserted by supplying --attest-ai-off; not independently verified",
+  "prediction_precommit": "878fee95eb32251880dc592b8801067025bcc6b7",
+  "prediction_commit_url": "https://github.com/Ethan-Todd/FIN-439-Project-2/commit/878fee95eb32251880dc592b8801067025bcc6b7",
+  "precommit_committer_timestamp": "2026-11-16T18:12:35-05:00",
+  "execution_head": "878fee95eb32251880dc592b8801067025bcc6b7",
+  "python": "3.14.7",
+  "locked_file_sha256": {
+    "docs/locked-changed-input-prediction-2.md": "82d7ade9a321c94316092234b255a89238165b69b66bc81bd5330658b2e5e0f2",
+    "docs/locked-changed-input-decision-effect-2.md": "6a8c5a17fbe5004dc3d79e9679ce19860367225207dd4bccf651a22f6e9994c6",
+    "docs/locked-changed-input-provenance-2.md": "473e2cb7dd75c4587cdcc3a8f7bfa35cea4a14e0b344593f92efeabb081950b9",
+    "run_locked_allocation_test.py": "95396d6535657cae80beb15f39f4b4f95dee0969cd7c6b270f606da9d832f201",
+    "analysis.py": "1ce44f44d69c737f1d47e9c023c6e934d7e23d35d3bf8a05b39948875697b896",
+    "portfolio.py": "0f1e8102d8da432066466b9e2d5007482df9720e23977e06e0906bae1a30bd9c",
+    "signal_monitor.py": "e3093fd65300741f87d63c9180367b2e93eae33a694b57f2f4dea1aa83dc029d",
+    "policy.json": "17c127066fdaf07602e60a9d9ace075d8ffa84cea5dc56f41761dbd21a623631",
+    "prices.csv": "600b080f99353ef49334eeb0a25af10586b89659692c4ee7a08de420fbbac961",
+    "requirements-lock.txt": "667145601ad4cb3d0800830a6a00cb5f253c387d3618f5eef696514295471cd3"
+  },
+  "held_constant": {
+    "sample": "bundled 61 monthly prices / 60 returns",
+    "annual_cost": 0,
+    "return_objective": 0.05,
+    "minimum_sgov": 0.1,
+    "method": "Fixed-weight comparison, not reoptimization; no realized-performance or annual-rebalancing simulation"
+  },
+  "asset_estimates": {
+    "SGOV": {
+      "expected_return": 0.03715074894092623,
+      "volatility": 0.004988809649744492
+    },
+    "IEF": {
+      "expected_return": -0.017887120384476485,
+      "volatility": 0.07653846881405668
+    },
+    "LQD": {
+      "expected_return": -0.008059913738829793,
+      "volatility": 0.09788350507629888
+    },
+    "VOO": {
+      "expected_return": 0.14176394308964727,
+      "volatility": 0.15666677896739062
+    }
+  },
+  "before": {
+    "weights": {
+      "SGOV": 0.85,
+      "IEF": 0.0,
+      "LQD": 0.0,
+      "VOO": 0.15
+    },
+    "gross_estimated_return": 0.05284272806323438,
+    "annual_cost": 0,
+    "net_estimated_return": 0.05284272806323438,
+    "volatility": 0.024518921108197284,
+    "reserve_weight": 0.85,
+    "verdict": "PASS",
+    "violated_rules": []
+  },
+  "after": {
+    "weights": {
+      "SGOV": 0.1,
+      "IEF": 0.0,
+      "LQD": 0.0,
+      "VOO": 0.9
+    },
+    "gross_estimated_return": 0.13130262367477516,
+    "annual_cost": 0,
+    "net_estimated_return": 0.13130262367477516,
+    "volatility": 0.14107842104874546,
+    "reserve_weight": 0.1,
+    "verdict": "PASS",
+    "violated_rules": []
+  },
+  "changes": {
+    "net_estimated_return": {
+      "difference_percentage_points": 7.845989561154078,
+      "relative_change_percent": 148.47813216163166
+    },
+    "volatility": {
+      "difference_percentage_points": 11.655949994054819,
+      "relative_change_percent": 475.38592512367705
+    }
+  },
+  "actual_human_decision_effect": null,
+  "human_prediction_reconciliation": null,
+  "status": "Measured outputs only; student actual decision and reconciliation still required"
+}

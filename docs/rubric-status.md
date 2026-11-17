@@ -1,5 +1,7 @@
 # Evidence-based rubric assessment
 
+> Historical assessment: the scores below predate the November 17 [completed locked-record bundle](locked-changed-input-reconciliation-2.md). The prediction, original result, student actual decision, and reconciliation are now preserved; the earlier missing-record deduction needs reassessment. These historical scores are not an updated grade. Videos/transcripts and final submission checks remain incomplete.
+
 The user supplied the six-category 300-point rubric in this conversation on November 16, 2026. Scores below use its discrete performance bands and assess the **implementation package**, not a verified final GitHub/Brightspace submission. This is a conservative provisional assessment, not an instructor grade. Missing required evidence receives no assumed credit.
 
 | Category | Band | Estimated score | Actual evidence | Remaining gap |

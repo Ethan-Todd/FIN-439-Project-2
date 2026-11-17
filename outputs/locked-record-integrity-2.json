@@ -1,0 +1,11 @@
+{
+  "checked_at_utc": "2026-11-17T22:05:45.867326+00:00",
+  "scope": "Post-run read-only checks of original evidence; no designated experiment rerun",
+  "original_result_sha256": "4b1911128e4d35ac99d65c1f38ebfd98c63758d952df04e623a23d74c943eee0",
+  "precommit": "878fee95eb32251880dc592b8801067025bcc6b7",
+  "all_recorded_file_hashes_match_precommit": true,
+  "recorded_execution_follows_precommit": true,
+  "student_reflection": "docs/locked-changed-input-reflection-2.md",
+  "post_run_ai_reconciliation": "docs/locked-changed-input-reconciliation-2.md",
+  "original_result_modified": false
+}

@@ -4,7 +4,7 @@ This is educational analysis, not investment advice.
 
 # FIN 439 Project 2 — portfolio review
 
-**Status: pilot only, not submission-ready.** Human Locked Changed-Input evidence, final student review, videos/transcripts, and submission/access checks remain incomplete. The supplied rubric yields a provisional local-package estimate of 230.25/300; see [category evidence and gaps](docs/rubric-status.md). This is not an instructor grade or a completed-submission claim.
+**Status: pilot only, not submission-ready.** The [Locked Changed-Input evidence bundle](docs/locked-changed-input-reconciliation-2.md) is now preserved. Final student review, videos/transcripts, and submission/access checks remain incomplete. The earlier 230.25/300 rubric estimate predates the completed locked record; see [category evidence and gaps](docs/rubric-status.md). This is not an instructor grade or a completed-submission claim.
 
 The working mandate is [project_2_mandate.md](project_2_mandate.md): minimize estimated volatility on a five-percentage-point grid while meeting a 5% estimated annual return and at least 10% SGOV. The universe is SGOV, IEF, LQD, VOO, fully invested and long-only. Meridian and SEC exercises are separate supporting coursework; they do not replace this mandate or its evidence.
 
@@ -64,7 +64,7 @@ The mandate does not specify a benchmark, numerical volatility ceiling, cost bud
 
 ## Human-only work
 
-See [human evidence checklist](docs/human-evidence.md). Close AI tools before selecting and writing the designated prediction; commit and push that original prediction before running its experiment. This repository does not supply that prediction or claim it happened. Videos, transcripts, feedback, and historical records must be genuine.
+See [human evidence checklist](docs/human-evidence.md). Close AI tools before selecting and writing the designated prediction; commit and push that original prediction before running its experiment. The user-provided prediction and expected decision were committed before the recorded execution; the original result, student reflection, and separate AI-assisted reconciliation are now linked in the completed record. Authorship/execution conditions remain self-attested, not independently observed. Videos, transcripts, feedback, and historical records must be genuine.
 
 ## Separate exercises
 
